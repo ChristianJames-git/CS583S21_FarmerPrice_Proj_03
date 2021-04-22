@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject buildAreaModel, openAreaModel, WallNS, WallWE, Ground;
-    public Transform BuildPlatforms, OpenPaths, BaseReferences;
+    public Transform BuildPlatforms, OpenPaths, Boundaries;
     private static int mapX = 8, mapZ = 16;
     private GameObject[,] areaBlocks = new GameObject[mapX,mapZ];
 
@@ -24,17 +24,19 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateBuildAreas()
     {
+        if (mapX < 2 || mapZ < 2)
+            return; //TBI Throw error of map size not applicable here
         //Set Ground Size/Position
         Ground.transform.localScale = new Vector3(mapX, 0.2f, mapZ);
         Ground.transform.localPosition = new Vector3(mapX / 2 - 0.5f, -0.6f, mapZ / 2 - 0.5f);
         //Set WallNS
         WallNS.transform.localScale = new Vector3(mapX, 2, 0.2f);
         WallNS.transform.localPosition = new Vector3(mapX / 2 - 0.5f, 0.3f, -0.6f);
-        Instantiate(WallNS, BaseReferences).transform.localPosition = new Vector3(mapX / 2 - 0.5f, 0.3f, -0.6f + mapZ);
+        Instantiate(WallNS, Boundaries).transform.localPosition = new Vector3(mapX / 2 - 0.5f, 0.3f, -0.4f + mapZ);
         //Set WallWE
         WallWE.transform.localScale = new Vector3(0.2f, 2, mapZ + 0.4f);
         WallWE.transform.localPosition = new Vector3(-0.6f, 0.3f, mapZ/2 - 0.5f);
-        Instantiate(WallWE, BaseReferences).transform.localPosition = new Vector3(-0.6f + mapX, 0.3f, mapZ / 2 - 0.5f);
+        Instantiate(WallWE, Boundaries).transform.localPosition = new Vector3(-0.4f + mapX, 0.3f, mapZ / 2 - 0.5f);
         //Set build/open areas
         for (int i = 0; i < mapZ; i+=2)
         {
