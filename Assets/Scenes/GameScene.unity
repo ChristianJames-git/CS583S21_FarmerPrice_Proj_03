@@ -1390,8 +1390,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildAreaModel: {fileID: 174949113}
   openAreaModel: {fileID: 1354824327}
+  WallNS: {fileID: 1634355927}
+  WallWE: {fileID: 96907927}
+  Ground: {fileID: 1719691821}
   BuildPlatforms: {fileID: 308632646}
   OpenPaths: {fileID: 1058541269}
+  BaseReferences: {fileID: 582338604}
 --- !u!136 &2087750799
 CapsuleCollider:
   m_ObjectHideFlags: 0
