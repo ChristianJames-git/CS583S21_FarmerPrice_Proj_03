@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject buildAreaModel;
-    public GameObject openAreaModel;
-    private static int mapX = 12, mapZ = 25;
+    public GameObject buildAreaModel, openAreaModel;
+    public Transform BuildPlatforms, OpenPaths;
+    private static int mapX = 8, mapZ = 16;
     private GameObject[,] areaBlocks = new GameObject[mapX,mapZ];
 
     // Start is called before the first frame update
@@ -47,17 +47,17 @@ public class GameManager : MonoBehaviour
 
     private void BuildAreaBlock(int x, int z)
     {
-        GameObject buildArea = Instantiate(buildAreaModel);
+        GameObject buildArea = Instantiate(buildAreaModel, BuildPlatforms);
         buildArea.SetActive(true);
-        buildArea.transform.position = new Vector3(x, 0, z);
-        areaBlocks[x,z] = buildArea;
+        buildArea.transform.position = new Vector3(x, -0.4f, z);
+        areaBlocks[x, z] = buildArea;
     }
 
     private void OpenAreaBlock(int x, int z)
     {
-        GameObject openArea = Instantiate(openAreaModel);
+        GameObject openArea = Instantiate(openAreaModel, OpenPaths);
         openArea.SetActive(true);
-        openArea.transform.position = new Vector3(x, 0, z);
-        areaBlocks[x,z] = openArea;
+        openArea.transform.position = new Vector3(x, -0.49f, z);
+        areaBlocks[x, z] = openArea;
     }
 }
