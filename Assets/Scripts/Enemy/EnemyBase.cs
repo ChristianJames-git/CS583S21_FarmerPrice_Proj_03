@@ -3,6 +3,7 @@
 public class EnemyBase : MonoBehaviour
 {
     public float speed = 5f;
+    public int health;
 
     private Transform target;
     private int pointIndex;
