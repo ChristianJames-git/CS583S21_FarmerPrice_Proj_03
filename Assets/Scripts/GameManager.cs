@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         GameObject buildArea = Instantiate(buildAreaModel, BuildPlatforms);
         buildArea.SetActive(true);
         buildArea.transform.position = new Vector3(x, -0.4f, z);
+        buildArea.transform.localScale = new Vector3(1,1,1);
         areaBlocks[x, z] = buildArea;
     }
 
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject openArea = Instantiate(openAreaModel, OpenPaths);
         openArea.SetActive(true);
-        openArea.transform.position = new Vector3(x, -0.49f, z);
+        openArea.transform.localPosition = new Vector3(x, -0.49f, z);
         areaBlocks[x, z] = openArea;
     }
 }
