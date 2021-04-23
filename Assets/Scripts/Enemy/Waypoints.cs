@@ -3,14 +3,14 @@
 public class Waypoints : MonoBehaviour
 {
     //static so objects can access it without a direct reference
-    public static Transform[] waypoints;
+    public static Transform[] points;
 
     private void Awake()
     {
-        waypoints = new Transform[transform.childCount];
+        points = new Transform[transform.childCount];
 
         //go through all the children of this object and add them to the array in order
-        for (int i = 0; i < waypoints.Length; i++)
-            waypoints[i] = transform.GetChild(i);
+        for (int i = 0; i < points.Length; i++)
+            points[i] = transform.GetChild(i);
     }
 }
