@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject buildAreaModel;
-    public GameObject openAreaModel;
-    private static int mapX = 12, mapZ = 25;
+    public GameObject buildAreaModel, openAreaModel, WallNS, WallWE, Ground;
+    public Transform BuildPlatforms, OpenPaths, Boundaries;
+    private static int mapX = 8, mapZ = 16;
     private GameObject[,] areaBlocks = new GameObject[mapX,mapZ];
 
     // Start is called before the first frame update
@@ -24,6 +24,20 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateBuildAreas()
     {
+        if (mapX < 2 || mapZ < 2)
+            return; //TBI Throw error of map size not applicable here
+        //Set Ground Size/Position
+        Ground.transform.localScale = new Vector3(mapX, 0.2f, mapZ);
+        Ground.transform.localPosition = new Vector3(mapX / 2 - 0.5f, -0.6f, mapZ / 2 - 0.5f);
+        //Set WallNS
+        WallNS.transform.localScale = new Vector3(mapX, 2, 0.2f);
+        WallNS.transform.localPosition = new Vector3(mapX / 2 - 0.5f, 0.3f, -0.6f);
+        Instantiate(WallNS, Boundaries).transform.localPosition = new Vector3(mapX / 2 - 0.5f, 0.3f, -0.4f + mapZ);
+        //Set WallWE
+        WallWE.transform.localScale = new Vector3(0.2f, 2, mapZ + 0.4f);
+        WallWE.transform.localPosition = new Vector3(-0.6f, 0.3f, mapZ/2 - 0.5f);
+        Instantiate(WallWE, Boundaries).transform.localPosition = new Vector3(-0.4f + mapX, 0.3f, mapZ / 2 - 0.5f);
+        //Set build/open areas
         for (int i = 0; i < mapZ; i+=2)
         {
             if (i % 4 == 0)
@@ -47,17 +61,17 @@ public class GameManager : MonoBehaviour
 
     private void BuildAreaBlock(int x, int z)
     {
-        GameObject buildArea = Instantiate(buildAreaModel);
+        GameObject buildArea = Instantiate(buildAreaModel, BuildPlatforms);
         buildArea.SetActive(true);
-        buildArea.transform.position = new Vector3(x, 0, z);
-        areaBlocks[x,z] = buildArea;
+        buildArea.transform.position = new Vector3(x, -0.4f, z);
+        areaBlocks[x, z] = buildArea;
     }
 
     private void OpenAreaBlock(int x, int z)
     {
-        GameObject openArea = Instantiate(openAreaModel);
+        GameObject openArea = Instantiate(openAreaModel, OpenPaths);
         openArea.SetActive(true);
-        openArea.transform.position = new Vector3(x, 0, z);
-        areaBlocks[x,z] = openArea;
+        openArea.transform.position = new Vector3(x, -0.49f, z);
+        areaBlocks[x, z] = openArea;
     }
 }
