@@ -22,10 +22,7 @@ public class EnemyBase : MonoBehaviour
 
         //move the enemy
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
-        //check if this game object has reached the end
-        if (pointIndex >= Waypoints.points.Length)
-            Destroy(this.gameObject);
+            
 
         //check if this enemy has reached the target
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
@@ -34,6 +31,9 @@ public class EnemyBase : MonoBehaviour
             pointIndex++;
             if (Waypoints.points.Length > pointIndex)
                 target = Waypoints.points[pointIndex];
+            else
+                Destroy(this.gameObject);
+
         }
     }
 }
