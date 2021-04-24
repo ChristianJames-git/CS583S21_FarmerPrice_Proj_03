@@ -16,6 +16,8 @@ public class Waypoints : MonoBehaviour
             if (j % 2 == 1)
                 Instantiate(Waypoint, gameObject.transform).position = new Vector3(0, 0, i);
         }
+        if (GameManager.mapZ % 2 == 1)
+            Instantiate(Waypoint, gameObject.transform).position = new Vector3(GameManager.mapX - 1, 0, GameManager.mapZ - 1);
         points = new Transform[transform.childCount];
 
         //go through all the children of this object and add them to the array in order
