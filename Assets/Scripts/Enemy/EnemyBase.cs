@@ -19,10 +19,9 @@ public class EnemyBase : MonoBehaviour
     {
         //direction vector points form this object to the target
         Vector3 dir = target.position - transform.position;
-        dir.Normalize();
 
         //move the enemy
-        transform.Translate(dir * speed * Time.deltaTime);
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
         //check if this game object has reached the end
         if (pointIndex >= Waypoints.points.Length)
@@ -33,7 +32,8 @@ public class EnemyBase : MonoBehaviour
         {
             //find the next target
             pointIndex++;
-            target = Waypoints.points[pointIndex];
+            if (Waypoints.points.Length > pointIndex)
+                target = Waypoints.points[pointIndex];
         }
     }
 }
