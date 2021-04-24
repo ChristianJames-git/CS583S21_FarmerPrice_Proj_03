@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject buildAreaModel, openAreaModel, WallNS, WallWE, Ground;
     public Transform BuildPlatforms, OpenPaths, Boundaries;
-    private static int mapX = 8, mapZ = 16;
+    public static int mapX = 8, mapZ = 16;
     private GameObject[,] areaBlocks = new GameObject[mapX,mapZ];
 
     // Start is called before the first frame update
