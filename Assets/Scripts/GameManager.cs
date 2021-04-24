@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject buildAreaModel, openAreaModel, WallNS, WallWE, Ground;
-    public Transform BuildPlatforms, OpenPaths, Boundaries;
-    public static int mapX = 7, mapZ = 15;
+    public Transform BuildPlatforms, OpenPaths, Boundaries, End;
+    public static int mapX = 8, mapZ = 15;
     private GameObject[,] areaBlocks = new GameObject[mapX,mapZ];
 
     // Start is called before the first frame update
@@ -26,15 +26,19 @@ public class GameManager : MonoBehaviour
     {
         if (mapX < 2 || mapZ < 2)
             return; //TBI Throw error of map size not applicable here
-        float shiftX, shiftZ;
+        //Handle odd values
+        float shiftX, shiftZ, endX;
         if (mapX % 2 == 0)
             shiftX = mapX / 2 - 0.5f;
         else
             shiftX = mapX / 2;
-        if (mapZ % 2 == 0)
+        if (mapZ % 2 == 0) {
             shiftZ = mapZ / 2 - 0.5f;
-        else
+            endX = 0;
+        } else {
             shiftZ = mapZ / 2;
+            endX = mapX - 1;
+        }
         //Set Ground Size/Position
         Ground.transform.localScale = new Vector3(mapX, 0.2f, mapZ);
         Ground.transform.localPosition = new Vector3(shiftX, -0.6f, shiftZ);
@@ -46,7 +50,7 @@ public class GameManager : MonoBehaviour
         WallWE.transform.localScale = new Vector3(0.2f, 2, mapZ + 0.4f);
         WallWE.transform.localPosition = new Vector3(-0.6f, 0.3f, shiftZ);
         Instantiate(WallWE, Boundaries).transform.localPosition = new Vector3(-0.4f + mapX, 0.3f, shiftZ);
-        //Set build/open areas
+        //Set even rows starting on 0
         for (int i = 0; i < mapZ; i+=2)
         {
             if (i % 4 == 0)
@@ -61,11 +65,13 @@ public class GameManager : MonoBehaviour
                 BuildAreaBlock(j, i);
         }
         buildAreaModel.SetActive(false);
-        //instantiate open are rows
+        //Set odd rows starting on 1
         for (int i = 1; i < mapZ; i+=2)
             for (int j = 0; j < mapX; j++)
                 OpenAreaBlock(j, i);
         openAreaModel.SetActive(false);
+        //Move end
+        End.position = new Vector3(endX, 0, mapZ - 1);
     }
 
     private void BuildAreaBlock(int x, int z)
