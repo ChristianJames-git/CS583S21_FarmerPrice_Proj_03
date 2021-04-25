@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,12 +26,6 @@ public class GameManager : MonoBehaviour
         InstantiateBuildAreas();
         //Can replace this later with adding enemies to List directly anytime you add one
         InvokeRepeating("FindEnemies", 0f, 0.5f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //Create Map
