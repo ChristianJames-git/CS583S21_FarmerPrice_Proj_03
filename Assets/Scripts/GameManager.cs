@@ -54,9 +54,8 @@ public class GameManager : MonoBehaviour
             shiftZ = mapZ / 2;
             endX = mapX - 1;
         }
-        //Set Ground Size/Position
-        Ground.transform.localScale = new Vector3(mapX, 0.2f, mapZ);
-        Ground.transform.localPosition = new Vector3(shiftX, -0.6f, shiftZ);
+        //Center Ground Position
+        Ground.transform.localPosition = new Vector3(shiftX, -0.5f, shiftZ);
         //Set WallNS
         WallNS.transform.localScale = new Vector3(mapX, 2, 0.2f);
         WallNS.transform.localPosition = new Vector3(shiftX, 0.3f, -0.6f);
