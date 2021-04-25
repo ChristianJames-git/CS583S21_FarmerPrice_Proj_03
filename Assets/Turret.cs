@@ -5,7 +5,8 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public Transform target;
-    public float range = 4f;
+    public float range;
+    public float turnSpeed;
     public Transform PartToRotate;
 
     // Start is called before the first frame update
@@ -20,9 +21,11 @@ public class Turret : MonoBehaviour
         if (target == null)
             return;
 
+        //Rotate to Target
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
-        PartToRotate.rotation = Quaternion.Euler (0f, lookRotation.eulerAngles.y, 0f);
+        Vector3 rotation = Quaternion.Lerp(PartToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        PartToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
     }
 
     private void FindTarget ()
