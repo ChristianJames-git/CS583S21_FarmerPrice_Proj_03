@@ -555,7 +555,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1592270822596044614, guid: 212035a3fa7304667b37dcc20aa0d32d, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 212035a3fa7304667b37dcc20aa0d32d, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -1342,8 +1342,7 @@ PrefabInstance:
       propertyPath: speed
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1592270822596044614, guid: 212035a3fa7304667b37dcc20aa0d32d,
-        type: 3}
+    - target: {fileID: 0}
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
@@ -1353,7 +1352,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1592270822596044614, guid: 212035a3fa7304667b37dcc20aa0d32d, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 212035a3fa7304667b37dcc20aa0d32d, type: 3}
 --- !u!1 &1634355927
 GameObject:
@@ -1734,13 +1733,11 @@ PrefabInstance:
       propertyPath: speed
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1592270822596044614, guid: 212035a3fa7304667b37dcc20aa0d32d,
-        type: 3}
+    - target: {fileID: 0}
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1592270822596044614, guid: 212035a3fa7304667b37dcc20aa0d32d,
-        type: 3}
+    - target: {fileID: 0}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
@@ -1749,8 +1746,7 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1592270822596044614, guid: 212035a3fa7304667b37dcc20aa0d32d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 212035a3fa7304667b37dcc20aa0d32d, type: 3}
 --- !u!4 &2046640755 stripped
 Transform:
