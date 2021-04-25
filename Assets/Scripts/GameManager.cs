@@ -9,11 +9,25 @@ public class GameManager : MonoBehaviour
     public static int mapX = 8, mapZ = 15;
     private GameObject[,] areaBlocks = new GameObject[mapX,mapZ];
 
+    public GameObject[] enemies;
+    private string enemyTag = "Enemy";
+
+    public static GameManager Instance { get; private set; }
+
+    void Awake()
+    {
+        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
+        else { Destroy(gameObject); }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         //Generate build/move areas
         InstantiateBuildAreas();
+        //Can replace this later with adding enemies to List directly anytime you add one
+        InvokeRepeating("FindEnemies", 0f, 0.5f);
     }
 
     // Update is called once per frame
@@ -22,6 +36,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    //Create Map
     private void InstantiateBuildAreas()
     {
         if (mapX < 2 || mapZ < 2)
@@ -89,5 +104,36 @@ public class GameManager : MonoBehaviour
         openArea.SetActive(true);
         openArea.transform.localPosition = new Vector3(x, -0.49f, z);
         areaBlocks[x, z] = openArea;
+    }
+
+    private void FindEnemies()
+    {
+        enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+    }
+
+    public Transform FindNearestEnemy(float range)
+    {
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distanceToEnemy < shortestDistance)
+            {
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
+            }
+        }
+
+        if (nearestEnemy != null && shortestDistance <= range)
+            return nearestEnemy.transform;
+        else
+            return null;
+    }
+
+    public Transform FindFirstEnemyInRange(float range)
+    {
+        return null;
     }
 }

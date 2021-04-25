@@ -1504,6 +1504,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1592270822596044612, guid: 212035a3fa7304667b37dcc20aa0d32d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1592270822596044613, guid: 212035a3fa7304667b37dcc20aa0d32d,
         type: 3}
       propertyPath: speed
@@ -1565,6 +1570,7 @@ MonoBehaviour:
   OpenPaths: {fileID: 1058541269}
   Boundaries: {fileID: 1470320250}
   End: {fileID: 907135924}
+  enemies: []
 --- !u!136 &2087750799
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1621,3 +1627,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789e5ab497ed2a14c8efe83ed06c7d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &919132148005451326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2764263030695038434, guid: 101b10a264e42444aaf695c12f737e9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3070834019052764124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &919132148005451327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148005451326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae3cf6aa0e697b4ca037977c9cdcab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  range: 4
+--- !u!1001 &3070834019052764124
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2764263030695038434, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_Name
+      value: Turret1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249191241835009880, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 101b10a264e42444aaf695c12f737e9a, type: 3}
