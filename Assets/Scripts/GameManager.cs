@@ -111,18 +111,21 @@ public class GameManager : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag(enemyTag);
     }
 
-    public Transform FindNearestEnemy(float range)
+    public Transform FindNearestEnemy(float range, Transform turret)
     {
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
         foreach (GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
+            if (enemy != null)
             {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                float distanceToEnemy = Vector3.Distance(turret.position, enemy.transform.position);
+                if (distanceToEnemy < shortestDistance)
+                {
+                    shortestDistance = distanceToEnemy;
+                    nearestEnemy = enemy;
+                }
             }
         }
 
