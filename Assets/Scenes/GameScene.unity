@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 174949117}
   - component: {fileID: 174949116}
   - component: {fileID: 174949115}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BuildArea
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -322,6 +322,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 76192795451244437, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 76192795451244437, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
+        type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -332,8 +337,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 76192795827928594, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
         type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1354113486}
+    - target: {fileID: 76192795827928594, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 76192795827928594, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
+        type: 3}
+      propertyPath: groundChecker
+      value: 
+      objectReference: {fileID: 1254270136}
+    - target: {fileID: 76192795827928594, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
+        type: 3}
       propertyPath: groundMask.m_Bits
-      value: 256
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 76192795827928595, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
         type: 3}
@@ -496,7 +516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 308632646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BuildPlatforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +586,7 @@ GameObject:
   - component: {fileID: 586580858}
   - component: {fileID: 586580857}
   - component: {fileID: 586580856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -1021,7 +1041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1058541269}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OpenPaths
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1250,11 +1270,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 101b10a264e42444aaf695c12f737e9a, type: 3}
+--- !u!4 &1254270136 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 76192795451244436, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
+    type: 3}
+  m_PrefabInstance: {fileID: 273657646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1298622620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1592270822596044610, guid: 212035a3fa7304667b37dcc20aa0d32d,
     type: 3}
   m_PrefabInstance: {fileID: 1533695314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1354113486 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 76192795827928620, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
+    type: 3}
+  m_PrefabInstance: {fileID: 273657646}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1354824327
 GameObject:
@@ -1268,7 +1300,7 @@ GameObject:
   - component: {fileID: 1354824329}
   - component: {fileID: 1354824331}
   - component: {fileID: 1354824330}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OpenArea
   m_TagString: ground
   m_Icon: {fileID: 0}
