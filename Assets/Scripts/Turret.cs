@@ -60,6 +60,9 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, GameManager.Instance.Bullets);
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, GameManager.Instance.Bullets);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        if (bullet != null)
+            bullet.Follow(target);
     }
 }
