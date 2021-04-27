@@ -2,7 +2,7 @@
 
 public class EnemyBase : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 2f;
     public int health;
 
     private Transform target;
@@ -19,21 +19,21 @@ public class EnemyBase : MonoBehaviour
     {
         //direction vector points form this object to the target
         Vector3 dir = target.position - transform.position;
-        dir.Normalize();
 
         //move the enemy
-        transform.Translate(dir * speed * Time.deltaTime);
-
-        //check if this game object has reached the end
-        if (pointIndex >= Waypoints.points.Length)
-            Destroy(this.gameObject);
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+            
 
         //check if this enemy has reached the target
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
             //find the next target
             pointIndex++;
-            target = Waypoints.points[pointIndex];
+            if (Waypoints.points.Length > pointIndex)
+                target = Waypoints.points[pointIndex];
+            else
+                Destroy(this.gameObject);
+
         }
     }
 }
