@@ -5,8 +5,8 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public Transform target;
-    public float range;
-    public float turnSpeed;
+    public float range = 4f;
+    public float turnSpeed = 10f;
     public Transform PartToRotate;
 
     // Start is called before the first frame update
