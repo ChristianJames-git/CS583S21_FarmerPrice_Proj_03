@@ -4,11 +4,12 @@ public class GameManager : MonoBehaviour
 {
     public GameObject buildAreaModel, openAreaModel, WallNS, WallWE, Ground;
     public Transform BuildPlatforms, OpenPaths, Boundaries, End;
-    public static int mapX = 8, mapZ = 15;
-    private GameObject[,] areaBlocks = new GameObject[mapX,mapZ];
+    public int mapX = 8, mapZ = 15;
+    private GameObject[,] areaBlocks;
 
     public GameObject[] enemies;
     private string enemyTag = "Enemy";
+    public Transform Bullets;
 
     public static GameManager Instance { get; private set; }
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        areaBlocks = new GameObject[mapX, mapZ];
         //Generate build/move areas
         InstantiateBuildAreas();
         //Can replace this later with adding enemies to List directly anytime you add one

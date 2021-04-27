@@ -437,6 +437,11 @@ PrefabInstance:
       objectReference: {fileID: 96907927}
     - target: {fileID: 6381099885003784711, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
         type: 3}
+      propertyPath: Bullets
+      value: 
+      objectReference: {fileID: 854473632}
+    - target: {fileID: 6381099885003784711, guid: 3b93b07fc387d4224b8d4bb28e8a57df,
+        type: 3}
       propertyPath: OpenPaths
       value: 
       objectReference: {fileID: 1058541269}
@@ -898,6 +903,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &854473631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854473632}
+  m_Layer: 0
+  m_Name: Bullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &854473632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854473631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1507042894}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &907135923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1574,7 @@ Transform:
   m_Children:
   - {fileID: 543450651660774532}
   - {fileID: 36384759}
+  - {fileID: 854473632}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1969,6 +2005,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1507042894}
     m_Modifications:
+    - target: {fileID: 2221024064351624178, guid: 101b10a264e42444aaf695c12f737e9a,
+        type: 3}
+      propertyPath: Bullets
+      value: 
+      objectReference: {fileID: 854473632}
     - target: {fileID: 2764263030695038434, guid: 101b10a264e42444aaf695c12f737e9a,
         type: 3}
       propertyPath: m_Name
