@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerMov : MonoBehaviour
 {
     CharacterController controller;
-    public float speed = 12f;
+    public float speed = 4f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -27,6 +27,7 @@ public class playerMov : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
+        Debug.Log(isGrounded);
 
         if(isGrounded && velocity.y < 0)
         {
