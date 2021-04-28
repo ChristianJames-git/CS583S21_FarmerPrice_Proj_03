@@ -12,6 +12,7 @@ public class Node : MonoBehaviour
     private Material turretBarrelColor;
     private int turretType = -1;
     private int turretLevel = 0;
+    private Turret turretScript;
 
     private void Start()
     {
@@ -38,10 +39,11 @@ public class Node : MonoBehaviour
 
     public void TurretBuilt(int type, GameObject turret)
     {
-        this.turret = turret;
+        //this.turret = turret;
         turretType = type;
         turretLevel = 1;
-        turretBarrelColor = this.turret.GetComponentInChildren<Renderer>().material;
+        turretBarrelColor = turret.GetComponentInChildren<Renderer>().material;
+        turretScript = turret.GetComponent<Turret>();
         TurretUpgraded(1);
     }
     public void TurretUpgraded(int level)
@@ -51,12 +53,15 @@ public class Node : MonoBehaviour
         {
             case 1:
                 baseColor = Color.yellow;
+                turretScript.damage = 5;
                 break;
             case 2:
                 baseColor = BuildManager.instance.orange;
+                turretScript.damage = 10;
                 break;
             case 3:
                 baseColor = Color.red;
+                turretScript.damage = 20;
                 break;
             default:
                 baseColor = Color.white;

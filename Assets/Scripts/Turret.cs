@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    private float damage = 10;
+    public float damage = 5;
 
 
     // Start is called before the first frame update

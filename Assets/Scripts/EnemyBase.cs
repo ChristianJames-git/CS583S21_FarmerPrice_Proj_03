@@ -3,7 +3,7 @@
 public class EnemyBase : MonoBehaviour
 {
     public float speed = 2f;
-    public float health;
+    public float health = 200;
 
     private Transform target;
     private int pointIndex;
@@ -17,6 +17,12 @@ public class EnemyBase : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
         //direction vector points form this object to the target
         Vector3 dir = target.position - transform.position;
 
