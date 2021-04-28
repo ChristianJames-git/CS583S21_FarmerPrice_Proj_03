@@ -121,15 +121,46 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
         if (nearestEnemy != null && shortestDistance <= range)
             return nearestEnemy.transform;
         else
             return null;
     }
 
-    public Transform FindFirstEnemyInRange(float range)
+    public Transform FindOldestEnemy(float range, Transform turret)
     {
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                float distanceToEnemy = Vector3.Distance(turret.position, enemy.transform.position);
+                if (distanceToEnemy <= range)
+                    return enemy.transform;
+            }
+        }
         return null;
+    }
+
+    public Transform FindStrongestEnemy(float range, Transform turret)
+    {
+        float highestHealth = -1;
+        GameObject strongestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                float enemyHealth = enemy.GetComponent<EnemyBase>().health;
+                if (Vector3.Distance(turret.position, enemy.transform.position) <= range && enemyHealth > highestHealth)
+                {
+                    highestHealth = enemyHealth;
+                    strongestEnemy = enemy;
+                }
+            }
+        }
+        if (strongestEnemy != null)
+            return strongestEnemy.transform;
+        else
+            return null;
     }
 }
