@@ -29,6 +29,7 @@ public class BuildManager : MonoBehaviour
         this.turretType = turretType;
     }
 
+    //Buttons
     public void BuyTurret (int turretType)
     {
 
