@@ -22,7 +22,6 @@ public class BuildManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        orange = new Color(1.0f, 0.64f, 0.0f);
         turretModels = new List<GameObject>() { turret1 };
         TurretUI.SetActive(false);
     }
@@ -50,7 +49,7 @@ public class BuildManager : MonoBehaviour
 
     public void UpgradeTurret()
     {
-        if (turretLevel == 0 || turretLevel == 3)
+        if (turretLevel == 1 || turretLevel == 2)
             areaScript.TurretUpgraded(++turretLevel);
         //Add money checking and subtraction and damage upgrade
     }

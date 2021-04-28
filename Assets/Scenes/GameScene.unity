@@ -568,7 +568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurretsContainer: {fileID: 1302108383}
   turret1: {fileID: 2764263030695038434, guid: 101b10a264e42444aaf695c12f737e9a, type: 3}
-  orange: {r: 0, g: 0, b: 0, a: 0}
+  orange: {r: 1, g: 0.47058824, b: 0, a: 0}
   TurretUI: {fileID: 1000685918}
 --- !u!1 &582338603
 GameObject:
