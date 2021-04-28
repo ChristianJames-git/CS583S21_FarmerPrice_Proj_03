@@ -30,7 +30,9 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        BuildManager.instance.AreaSelected(gameObject, turretType, turretLevel);
+        BuildManager.instance.AreaSelected(transform, this, turretType, turretLevel);
+        BuildManager.instance.BuyTurret(0);
+        BuildManager.instance.UpgradeTurret();
     }
 
     public void TurretBuilt(int type, GameObject turret)
@@ -39,6 +41,7 @@ public class Node : MonoBehaviour
         turretType = type;
         turretLevel = 1;
         turretBarrelColor = this.turret.GetComponentInChildren<Renderer>().material;
+        TurretUpgraded(1);
     }
     public void TurretUpgraded(int level)
     {

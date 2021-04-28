@@ -6,10 +6,13 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
+    public Transform TurretsContainer;
     public GameObject turret1;
-    private GameObject areaSelected;
+    private Transform areaSelected;
+    private Node areaScript;
     private int turretType;
     private int turretLevel;
+    private List<GameObject> turretModels;
 
     public Color orange;
 
@@ -20,24 +23,36 @@ public class BuildManager : MonoBehaviour
     {
         instance = this;
         orange = new Color(1.0f, 0.64f, 0.0f);
+        turretModels = new List<GameObject>() { turret1 };
+        TurretUI.SetActive(false);
     }
 
-    public void AreaSelected(GameObject areaClicked, int turretType, int turretLevel)
+    public void AreaSelected(Transform areaClicked, Node areaScript, int turretType, int turretLevel)
     {
+        TurretUI.SetActive(true);
         areaSelected = areaClicked;
         this.turretLevel = turretLevel;
         this.turretType = turretType;
+        this.areaScript = areaScript;
     }
 
     //Buttons
     public void BuyTurret (int turretType)
     {
-
+        if (turretLevel != 0)
+            return;
+        //Add money checking and subtraction
+        this.turretType = turretType;
+        turretLevel = 1;
+        GameObject turret = (GameObject)Instantiate(turretModels[turretType], areaSelected.position, areaSelected.rotation, TurretsContainer);
+        areaScript.TurretBuilt(turretType, turret);
     }
 
     public void UpgradeTurret()
     {
-
+        if (turretLevel == 0 || turretLevel == 3)
+            areaScript.TurretUpgraded(++turretLevel);
+        //Add money checking and subtraction and damage upgrade
     }
 
     public void SellTurret()

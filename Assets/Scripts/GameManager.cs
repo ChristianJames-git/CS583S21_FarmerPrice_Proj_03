@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         GameObject buildArea = Instantiate(buildAreaModel, BuildPlatforms);
         buildArea.SetActive(true);
         buildArea.transform.position = new Vector3(x, -0.4f, z);
-        buildArea.transform.localScale = new Vector3(1,1,1);
+        //buildArea.transform.scale = new Vector3(1,1,1);
         areaBlocks[x, z] = buildArea;
     }
 
