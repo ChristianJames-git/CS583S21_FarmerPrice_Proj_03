@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class GameManager : MonoBehaviour
         InstantiateBuildAreas();
         //Can replace this later with adding enemies to List directly anytime you add one
         InvokeRepeating("FindEnemies", 0f, 0.5f);
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     //Create Map

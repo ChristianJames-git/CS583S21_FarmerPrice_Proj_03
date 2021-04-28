@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class Turret : MonoBehaviour
     public float range = 4f;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
+    public int targetType = 0; //0:Nearest ; 1:Oldest ; 2:Strongest
 
     [Header("Don't Change")]
     public Transform PartToRotate;
@@ -17,6 +16,8 @@ public class Turret : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
+
+    private float damage = 10;
 
 
     // Start is called before the first frame update
@@ -48,7 +49,18 @@ public class Turret : MonoBehaviour
 
     private void FindTarget ()
     {
-        target = GameManager.Instance.FindNearestEnemy(range, transform);
+        switch (targetType)
+        {
+            case 1:
+                target = GameManager.Instance.FindOldestEnemy(range, transform);
+                break;
+            case 2:
+                target = GameManager.Instance.FindStrongestEnemy(range, transform);
+                break;
+            default:
+                target = GameManager.Instance.FindNearestEnemy(range, transform);
+                break;
+        }
     }
 
     //Range bubble draw
@@ -63,6 +75,6 @@ public class Turret : MonoBehaviour
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, GameManager.Instance.Bullets);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
-            bullet.Follow(target);
+            bullet.Follow(target, damage);
     }
 }
