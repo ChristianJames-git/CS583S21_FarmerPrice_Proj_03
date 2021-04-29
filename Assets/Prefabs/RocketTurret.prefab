@@ -89,8 +89,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1221075434600376972}
+  - component: {fileID: 1835803587663003727}
   m_Layer: 0
-  m_Name: Missile Launcher
+  m_Name: RocketTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,14 +105,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997892960636629046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: -0.5, z: 2}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 4, y: -0.3, z: 2}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 5306773017015792830}
   - {fileID: 6113634722708161476}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835803587663003727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997892960636629046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae3cf6aa0e697b4ca037977c9cdcab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  range: 4
+  fireRate: 1
+  targetType: 0
+  PartToRotate: {fileID: 6113634722708161476}
+  turnSpeed: 10
+  bulletPrefab: {fileID: 675257481076401281, guid: 0eabd61169392e24eb7aba9983a81ac3,
+    type: 3}
+  firePoint: {fileID: 6113634722772205542}
+  damage: 5
 --- !u!1 &6113634722708161477
 GameObject:
   m_ObjectHideFlags: 0
