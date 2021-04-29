@@ -31,6 +31,9 @@ public class BuildManager : MonoBehaviour
     public Image E;
     public Sprite E_Up;
     public Sprite E_Down;
+    public Image R;
+    public Sprite R_Up;
+    public Sprite R_Down;
     public Sprite turret1Sprite, turret2Sprite, turret3Sprite;
     private List<Sprite> turretSprites;
     private int currentTurretDisplayed = 0;
@@ -53,6 +56,9 @@ public class BuildManager : MonoBehaviour
         //Toggle Upgrade Mode
         if (Input.GetKeyDown(KeyCode.U))
             UPress(inUpgradeMode);
+        //Toggle Sell Mode
+        if (Input.GetKeyDown(KeyCode.R))
+            RPress(inSellMode);
         //Animate UI
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -93,6 +99,7 @@ public class BuildManager : MonoBehaviour
             B.color = Color.cyan;
             inBuildMode = true;
             UPress(true);
+            RPress(true);
             B.sprite = B_Down;
         }
     }
@@ -110,7 +117,26 @@ public class BuildManager : MonoBehaviour
             U.color = Color.cyan;
             inUpgradeMode = true;
             BPress(true);
+            RPress(true);
             U.sprite = U_Down;
+        }
+    }
+
+    private void RPress(bool inMode)
+    {
+        if (inMode)
+        {
+            R.color = Color.white;
+            inSellMode = false;
+            R.sprite = R_Up;
+        }
+        else
+        {
+            R.color = Color.cyan;
+            inSellMode = true;
+            BPress(true);
+            UPress(true);
+            R.sprite = R_Down;
         }
     }
 
