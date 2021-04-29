@@ -29,22 +29,25 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
-            return;
-
-        //Rotate to Target
-        Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(PartToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        PartToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
-
-        //FireRate
-        if (fireCountdown <= 0)
+        if (GameObject.Find("MapManager").GetComponent<MapManager>().inMap == false)
         {
-            Shoot();
-            fireCountdown = 1f / fireRate;
+            if (target == null)
+                return;
+
+            //Rotate to Target
+            Vector3 dir = target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = Quaternion.Lerp(PartToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            PartToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+            //FireRate
+            if (fireCountdown <= 0)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
+            fireCountdown -= Time.deltaTime;
         }
-        fireCountdown -= Time.deltaTime;
     }
 
     private void FindTarget ()
