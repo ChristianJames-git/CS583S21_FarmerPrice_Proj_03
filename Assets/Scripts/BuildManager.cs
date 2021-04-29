@@ -149,7 +149,7 @@ public class BuildManager : MonoBehaviour
         script.turretScript = turret.GetComponent<Turret>();
         script.turretBarrelColor = turret.GetComponentInChildren<Renderer>().material;
         script.turretType = currentTurretDisplayed;
-        script.turretLevel = 1;
+        UpgradeTurret(script);
     }
 
     public void UpgradeTurret(Node script)
@@ -176,9 +176,10 @@ public class BuildManager : MonoBehaviour
         script.baseColor = newColor;
     }
 
-    public GameObject SellTurret(GameObject turret)
+    public void SellTurret(Node script)
     {
-        Destroy(turret);
-        return null;
+        Destroy(script.turret);
+        script.turret = null;
+        script.baseColor = Color.white;
     }
 }

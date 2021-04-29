@@ -36,6 +36,6 @@ public class Node : MonoBehaviour
         if (BuildManager.instance.inUpgradeMode && turret != null && turretLevel < 3)
             BuildManager.instance.UpgradeTurret(this);
         if (BuildManager.instance.inSellMode && turret != null)
-            turret = BuildManager.instance.SellTurret(turret);
+            BuildManager.instance.SellTurret(this);
     }
 }
