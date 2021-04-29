@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    private Color baseColor;
+    public Color baseColor;
     public Color hoverColor;
     public Renderer rend;
 
-    private GameObject turret;
-    private Material turretBarrelColor;
-    private int turretType = -1;
-    private int turretLevel = 0;
-    private Turret turretScript;
+    public GameObject turret = null;
+    public Material turretBarrelColor;
+    public int turretType = -1;
+    public int turretLevel = 0;
+    public Turret turretScript;
 
     private void Start()
     {
@@ -31,21 +31,15 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (BuildManager.instance.inBuildMode)
-            BuildTurret();
-        else if (BuildManager.instance.inUpgradeMode)
-            UpgradeTurret();
-        BuildManager.instance.AreaSelected(transform, this, turretType, turretLevel);
+        if (BuildManager.instance.inBuildMode && turret == null)
+            BuildManager.instance.BuildTurret(this);
+        if (BuildManager.instance.inUpgradeMode && turret != null && turretLevel < 3)
+            BuildManager.instance.UpgradeTurret(this);
     }
 
-    private void BuildTurret()
+    private void SellTurret()
     {
-
-    }
-
-    private void UpgradeTurret()
-    {
-
+        turret = BuildManager.instance.SellTurret(turret);
     }
     public void TurretBuilt(int type, GameObject turret)
     {
@@ -54,30 +48,5 @@ public class Node : MonoBehaviour
         turretLevel = 1;
         turretBarrelColor = turret.GetComponentInChildren<Renderer>().material;
         turretScript = turret.GetComponent<Turret>();
-        TurretUpgraded(1);
-    }
-    public void TurretUpgraded(int level)
-    {
-        turretLevel = level;
-        switch (level)
-        {
-            case 1:
-                baseColor = Color.yellow;
-                turretScript.damage = 5;
-                break;
-            case 2:
-                baseColor = BuildManager.instance.orange;
-                turretScript.damage = 10;
-                break;
-            case 3:
-                baseColor = Color.red;
-                turretScript.damage = 20;
-                break;
-            default:
-                baseColor = Color.white;
-                break;
-        }
-        if (level > 0)
-            turretBarrelColor.color = baseColor;
     }
 }

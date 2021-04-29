@@ -527,8 +527,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b8adbdf22dd5e4f9b5db05041aa0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
   hoverColor: {r: 0.5105638, g: 1, b: 0.3254717, a: 0.8}
   rend: {fileID: 174949116}
+  turret: {fileID: 0}
+  turretBarrelColor: {fileID: 0}
+  turretType: -1
+  turretLevel: 0
+  turretScript: {fileID: 0}
 --- !u!1 &206154736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,7 +1067,6 @@ MonoBehaviour:
   turret1: {fileID: 2764263030695038434, guid: 101b10a264e42444aaf695c12f737e9a, type: 3}
   inBuildMode: 0
   inUpgradeMode: 0
-  orange: {r: 1, g: 0.47058824, b: 0, a: 0}
   TurretUI: {fileID: 1000685918}
   B: {fileID: 1783398891}
   B_Up: {fileID: -6904836121143831309, guid: ed69f9eb34cb91e448cb678dd34abc32, type: 3}

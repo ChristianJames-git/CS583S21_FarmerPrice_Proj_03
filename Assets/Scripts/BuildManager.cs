@@ -8,17 +8,13 @@ public class BuildManager : MonoBehaviour
     public static BuildManager instance;
 
     public Transform TurretsContainer;
-    public GameObject turret1;
-    private Transform areaSelected;
-    private Node areaScript;
-    private int turretType;
-    private int turretLevel;
-    private List<GameObject> turretModels;
+    public GameObject turret1; //turret2, turret3
+    private List<GameObject> turretPrefabs;
+    private float[,] turretDamages; //[turret type, turret level]
 
     public bool inBuildMode;
     public bool inUpgradeMode;
-
-    public Color orange;
+    private Color orange;
 
     [Header("UI")]
     public GameObject TurretUI;
@@ -36,15 +32,16 @@ public class BuildManager : MonoBehaviour
     public Sprite E_Down;
     public Sprite turret1Sprite, turret2Sprite, turret3Sprite;
     private List<Sprite> turretSprites;
-    private int currentTurretDisplayed = 1;
+    private int currentTurretDisplayed = 0;
     public Image turretToBuild;
 
     void Awake()
     {
         instance = this;
-        turretModels = new List<GameObject>() { turret1 };
+        turretPrefabs = new List<GameObject>() { turret1 };
         turretSprites = new List<Sprite>() { turret1Sprite, turret2Sprite, turret3Sprite };
-        TurretUI.SetActive(false);
+        turretDamages = new float[1, 3] { { 5, 10, 20 } };
+        orange = new Color(1, 0.45f, 0, 1);
     }
 
     private void Update()
@@ -60,8 +57,8 @@ public class BuildManager : MonoBehaviour
         {
             Q.color = Color.cyan;
             Q.sprite = Q_Down;
-            if (currentTurretDisplayed > 1)
-                turretToBuild.sprite = turretSprites[--currentTurretDisplayed-1];
+            if (currentTurretDisplayed > 0)
+                turretToBuild.sprite = turretSprites[--currentTurretDisplayed];
         }
         if (Input.GetKeyUp(KeyCode.Q))
         {
@@ -72,8 +69,8 @@ public class BuildManager : MonoBehaviour
         {
             E.color = Color.cyan;
             E.sprite = E_Down;
-            if (currentTurretDisplayed < turretSprites.Count)
-                turretToBuild.sprite = turretSprites[currentTurretDisplayed++];
+            if (currentTurretDisplayed < turretSprites.Count-1)
+                turretToBuild.sprite = turretSprites[++currentTurretDisplayed];
         }
         if (Input.GetKeyUp(KeyCode.E))
         {
@@ -116,36 +113,45 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    public void AreaSelected(Transform areaClicked, Node areaScript, int turretType, int turretLevel)
-    {
-        TurretUI.SetActive(true);
-        areaSelected = areaClicked;
-        this.turretLevel = turretLevel;
-        this.turretType = turretType;
-        this.areaScript = areaScript;
-    }
-
     //Buttons
-    public void BuyTurret (int turretType)
+    public void BuildTurret (Node script)
     {
-        if (turretLevel != 0)
-            return;
         //Add money checking and subtraction
-        this.turretType = turretType;
-        turretLevel = 1;
-        GameObject turret = (GameObject)Instantiate(turretModels[turretType], areaSelected.position, areaSelected.rotation, TurretsContainer);
-        areaScript.TurretBuilt(turretType, turret);
+        GameObject turret = (GameObject)Instantiate(turretPrefabs[currentTurretDisplayed], script.transform.position, script.transform.rotation, TurretsContainer);
+        script.turret = turret;
+        script.turretScript = turret.GetComponent<Turret>();
+        script.turretBarrelColor = turret.GetComponentInChildren<Renderer>().material;
+        script.turretType = currentTurretDisplayed;
+        script.turretLevel = 1;
     }
 
-    public void UpgradeTurret()
+    public void UpgradeTurret(Node script)
     {
-        if (turretLevel == 1 || turretLevel == 2)
-            areaScript.TurretUpgraded(++turretLevel);
+        Color newColor;
         //Add money checking and subtraction and damage upgrade
+        switch (script.turretLevel)
+        {
+            case 0:
+                newColor = Color.yellow;
+                break;
+            case 1:
+                newColor = orange;
+                break;
+            case 2:
+                newColor = Color.red;
+                break;
+            default:
+                newColor = Color.white;
+                break;
+        }
+        script.turretScript.damage = turretDamages[script.turretType, script.turretLevel++];
+        script.turretBarrelColor.color = newColor;
+        script.baseColor = newColor;
     }
 
-    public void SellTurret()
+    public GameObject SellTurret(GameObject turret)
     {
-
+        Destroy(turret);
+        return null;
     }
 }
