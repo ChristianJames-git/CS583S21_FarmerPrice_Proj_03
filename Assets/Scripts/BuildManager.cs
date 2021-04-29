@@ -8,7 +8,7 @@ public class BuildManager : MonoBehaviour
     public static BuildManager instance;
 
     public Transform TurretsContainer;
-    public GameObject turret1; //turret2, turret3
+    public GameObject turret1, turret2, turret3;
     private List<GameObject> turretPrefabs;
     private float[,] turretDamages; //[turret type, turret level]
 
@@ -42,9 +42,9 @@ public class BuildManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        turretPrefabs = new List<GameObject>() { turret1 };
+        turretPrefabs = new List<GameObject>() { turret1, turret2, turret3 };
         turretSprites = new List<Sprite>() { turret1Sprite, turret2Sprite, turret3Sprite };
-        turretDamages = new float[1, 3] { { 5, 10, 20 } };
+        turretDamages = new float[3, 3] { { 5, 10, 20 } , { 20, 40, 80 } , { 2, 5, 10 } };
         orange = new Color(1, 0.45f, 0, 1);
     }
 
@@ -147,7 +147,7 @@ public class BuildManager : MonoBehaviour
         GameObject turret = (GameObject)Instantiate(turretPrefabs[currentTurretDisplayed], script.transform.position, script.transform.rotation, TurretsContainer);
         script.turret = turret;
         script.turretScript = turret.GetComponent<Turret>();
-        script.turretBarrelColor = turret.GetComponentInChildren<Renderer>().material;
+        script.turretColor = turret.GetComponentInChildren<Renderer>().material;
         script.turretType = currentTurretDisplayed;
         UpgradeTurret(script);
     }
@@ -172,7 +172,7 @@ public class BuildManager : MonoBehaviour
                 break;
         }
         script.turretScript.damage = turretDamages[script.turretType, script.turretLevel++];
-        script.turretBarrelColor.color = newColor;
+        script.turretColor.color = newColor;
         script.baseColor = newColor;
     }
 
@@ -181,5 +181,6 @@ public class BuildManager : MonoBehaviour
         Destroy(script.turret);
         script.turret = null;
         script.baseColor = Color.white;
+        script.turretLevel = 0;
     }
 }

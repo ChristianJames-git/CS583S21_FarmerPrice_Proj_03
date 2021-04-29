@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -681,7 +681,7 @@ MonoBehaviour:
   hoverColor: {r: 0.5105638, g: 1, b: 0.3254717, a: 0.8}
   rend: {fileID: 174949116}
   turret: {fileID: 0}
-  turretBarrelColor: {fileID: 0}
+  turretColor: {fileID: 0}
   turretType: -1
   turretLevel: 0
   turretScript: {fileID: 0}
@@ -1157,7 +1157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 582338604}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &308396178
 MonoBehaviour:
@@ -1220,6 +1220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurretsContainer: {fileID: 1302108383}
   turret1: {fileID: 2764263030695038434, guid: 101b10a264e42444aaf695c12f737e9a, type: 3}
+  turret2: {fileID: 1997892960636629046, guid: 9b6561de82261534f85bc17c291d3abc, type: 3}
+  turret3: {fileID: 3881706526006982699, guid: c92e4d5a542bf8b47af3baa6440bb183, type: 3}
   inBuildMode: 0
   inUpgradeMode: 0
   inSellMode: 0
@@ -1240,10 +1242,8 @@ MonoBehaviour:
   R_Up: {fileID: 6312339627191976297, guid: 5d4aa4d940b251643af957674af8796c, type: 3}
   R_Down: {fileID: 6179127818059126045, guid: 5d4aa4d940b251643af957674af8796c, type: 3}
   turret1Sprite: {fileID: 21300000, guid: 7f23762addb41154a87a16357048a08c, type: 3}
-  turret2Sprite: {fileID: -2692379207246667897, guid: df5d45eb56f18f245b4931c2f553598f,
-    type: 3}
-  turret3Sprite: {fileID: -6904836121143831309, guid: ed69f9eb34cb91e448cb678dd34abc32,
-    type: 3}
+  turret2Sprite: {fileID: 21300000, guid: eb93de74aa69e394392e20f72076e20e, type: 3}
+  turret3Sprite: {fileID: 21300000, guid: 28b74157681d4e941905a790f4d34155, type: 3}
   turretToBuild: {fileID: 41377625}
 --- !u!1 &315140789
 GameObject:
@@ -1426,7 +1426,6 @@ Transform:
   - {fileID: 1470320250}
   - {fileID: 1155237317}
   - {fileID: 1058541269}
-  - {fileID: 1359839236}
   - {fileID: 308396177}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -2187,7 +2186,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1354113486 stripped
 CharacterController:
@@ -2288,36 +2287,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354824327}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1359839235
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1359839236}
-  m_Layer: 0
-  m_Name: BuiltTowers (TBI)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1359839236
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359839235}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 582338604}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412305146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,7 +2417,7 @@ Transform:
   - {fileID: 930015638}
   - {fileID: 1298622620}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1533695314
 PrefabInstance:
