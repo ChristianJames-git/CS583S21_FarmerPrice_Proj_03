@@ -22,8 +22,6 @@ public class Node : MonoBehaviour
     private void OnMouseEnter()
     {
         rend.material.color = hoverColor;
-        BuildManager.instance.AreaSelected(transform, this, turretType, turretLevel);
-        BuildManager.instance.UpgradeTurret();
     }
 
     private void OnMouseExit()
@@ -33,10 +31,22 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (BuildManager.instance.inBuildMode)
+            BuildTurret();
+        else if (BuildManager.instance.inUpgradeMode)
+            UpgradeTurret();
         BuildManager.instance.AreaSelected(transform, this, turretType, turretLevel);
-        BuildManager.instance.BuyTurret(0);
     }
 
+    private void BuildTurret()
+    {
+
+    }
+
+    private void UpgradeTurret()
+    {
+
+    }
     public void TurretBuilt(int type, GameObject turret)
     {
         //this.turret = turret;

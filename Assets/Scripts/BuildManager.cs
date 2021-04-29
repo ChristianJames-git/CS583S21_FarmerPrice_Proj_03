@@ -15,7 +15,8 @@ public class BuildManager : MonoBehaviour
     private int turretLevel;
     private List<GameObject> turretModels;
 
-    private bool inBuildMode;
+    public bool inBuildMode;
+    public bool inUpgradeMode;
 
     public Color orange;
 
@@ -24,6 +25,9 @@ public class BuildManager : MonoBehaviour
     public Image B;
     public Sprite B_Up;
     public Sprite B_Down;
+    public Image U;
+    public Sprite U_Up;
+    public Sprite U_Down;
     public Image Q;
     public Sprite Q_Up;
     public Sprite Q_Down;
@@ -47,18 +51,10 @@ public class BuildManager : MonoBehaviour
     {
         //Toggle Build Mode
         if (Input.GetKeyDown(KeyCode.B))
-        {
-            if (inBuildMode)
-            {
-                B.color = Color.white;
-                inBuildMode = false;
-                B.sprite = B_Up;
-            } else {
-                B.color = Color.cyan;
-                inBuildMode = true;
-                B.sprite = B_Down;
-            }
-        }
+            BPress(inBuildMode);
+        //Toggle Upgrade Mode
+        if (Input.GetKeyDown(KeyCode.U))
+            UPress(inUpgradeMode);
         //Animate UI
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -83,6 +79,40 @@ public class BuildManager : MonoBehaviour
         {
             E.color = Color.white;
             E.sprite = E_Up;
+        }
+    }
+
+    private void BPress(bool inMode)
+    {
+        if (inMode)
+        {
+            B.color = Color.white;
+            inBuildMode = false;
+            B.sprite = B_Up;
+        }
+        else
+        {
+            B.color = Color.cyan;
+            inBuildMode = true;
+            UPress(true);
+            B.sprite = B_Down;
+        }
+    }
+
+    private void UPress(bool inMode)
+    {
+        if (inMode)
+        {
+            U.color = Color.white;
+            inUpgradeMode = false;
+            U.sprite = U_Up;
+        }
+        else
+        {
+            U.color = Color.cyan;
+            inUpgradeMode = true;
+            BPress(true);
+            U.sprite = U_Down;
         }
     }
 
