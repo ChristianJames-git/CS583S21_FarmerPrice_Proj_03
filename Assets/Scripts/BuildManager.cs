@@ -181,5 +181,6 @@ public class BuildManager : MonoBehaviour
         Destroy(script.turret);
         script.turret = null;
         script.baseColor = Color.white;
+        script.turretLevel = 0;
     }
 }
