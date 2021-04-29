@@ -35,18 +35,7 @@ public class Node : MonoBehaviour
             BuildManager.instance.BuildTurret(this);
         if (BuildManager.instance.inUpgradeMode && turret != null && turretLevel < 3)
             BuildManager.instance.UpgradeTurret(this);
-    }
-
-    private void SellTurret()
-    {
-        turret = BuildManager.instance.SellTurret(turret);
-    }
-    public void TurretBuilt(int type, GameObject turret)
-    {
-        //this.turret = turret;
-        turretType = type;
-        turretLevel = 1;
-        turretBarrelColor = turret.GetComponentInChildren<Renderer>().material;
-        turretScript = turret.GetComponent<Turret>();
+        if (BuildManager.instance.inSellMode && turret != null)
+            turret = BuildManager.instance.SellTurret(turret);
     }
 }

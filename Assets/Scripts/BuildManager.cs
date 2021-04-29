@@ -14,6 +14,7 @@ public class BuildManager : MonoBehaviour
 
     public bool inBuildMode;
     public bool inUpgradeMode;
+    public bool inSellMode;
     private Color orange;
 
     [Header("UI")]
