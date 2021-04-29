@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour
 {
@@ -14,16 +15,75 @@ public class BuildManager : MonoBehaviour
     private int turretLevel;
     private List<GameObject> turretModels;
 
+    private bool inBuildMode;
+
     public Color orange;
 
     [Header("UI")]
     public GameObject TurretUI;
+    public Image B;
+    public Sprite B_Up;
+    public Sprite B_Down;
+    public Image Q;
+    public Sprite Q_Up;
+    public Sprite Q_Down;
+    public Image E;
+    public Sprite E_Up;
+    public Sprite E_Down;
+    public Sprite turret1Sprite, turret2Sprite, turret3Sprite;
+    private List<Sprite> turretSprites;
+    private int currentTurretDisplayed = 1;
+    public Image turretToBuild;
 
     void Awake()
     {
         instance = this;
         turretModels = new List<GameObject>() { turret1 };
+        turretSprites = new List<Sprite>() { turret1Sprite, turret2Sprite, turret3Sprite };
         TurretUI.SetActive(false);
+    }
+
+    private void Update()
+    {
+        //Toggle Build Mode
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (inBuildMode)
+            {
+                B.color = Color.white;
+                inBuildMode = false;
+                B.sprite = B_Up;
+            } else {
+                B.color = Color.cyan;
+                inBuildMode = true;
+                B.sprite = B_Down;
+            }
+        }
+        //Animate UI
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Q.color = Color.cyan;
+            Q.sprite = Q_Down;
+            if (currentTurretDisplayed > 1)
+                turretToBuild.sprite = turretSprites[--currentTurretDisplayed-1];
+        }
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            Q.color = Color.white;
+            Q.sprite = Q_Up;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            E.color = Color.cyan;
+            E.sprite = E_Down;
+            if (currentTurretDisplayed < turretSprites.Count)
+                turretToBuild.sprite = turretSprites[currentTurretDisplayed++];
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            E.color = Color.white;
+            E.sprite = E_Up;
+        }
     }
 
     public void AreaSelected(Transform areaClicked, Node areaScript, int turretType, int turretLevel)
