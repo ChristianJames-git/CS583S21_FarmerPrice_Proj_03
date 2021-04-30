@@ -14,7 +14,7 @@ public class ScenesManager : MonoBehaviour
         highlighted = false;
     }
 
-    public void onPlayGameButtonHighlighted()
+    public void onButtonHighlighted()
     {
         highlighted = !highlighted;
         PlayButton.SetBool("Highlighted", highlighted);
