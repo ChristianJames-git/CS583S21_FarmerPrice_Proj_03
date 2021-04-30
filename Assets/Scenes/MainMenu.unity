@@ -459,7 +459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972445967}
   m_LocalRotation: {x: -0.2542831, y: -0.24978639, z: 0.06816519, w: -0.9318264}
-  m_LocalPosition: {x: -0.837, y: 1.018, z: -1.103}
+  m_LocalPosition: {x: -0.739, y: 0.903, z: -0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1929038162}
@@ -539,11 +539,11 @@ MonoBehaviour:
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
-    m_NormalTrigger: Normal
+    m_NormalTrigger: Default
     m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_PressedTrigger: Highlighted
+    m_SelectedTrigger: Highlighted
+    m_DisabledTrigger: Default
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1110779311}
   m_OnClick:
@@ -942,11 +942,11 @@ MonoBehaviour:
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
-    m_NormalTrigger: Normal
+    m_NormalTrigger: Default
     m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_PressedTrigger: Highlighted
+    m_SelectedTrigger: Highlighted
+    m_DisabledTrigger: Default
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1207765331}
   m_OnClick:
@@ -1310,11 +1310,11 @@ MonoBehaviour:
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
-    m_NormalTrigger: Normal
+    m_NormalTrigger: Default
     m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_PressedTrigger: Highlighted
+    m_SelectedTrigger: Highlighted
+    m_DisabledTrigger: Default
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1724640385}
   m_OnClick:
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af5e8c7caf57ad44a7d60360a5ad1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayButton: {fileID: 1781656204}
+  button: {fileID: 0}
 --- !u!4 &1781656203
 Transform:
   m_ObjectHideFlags: 0

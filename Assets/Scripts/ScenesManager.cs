@@ -5,19 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
-    public Animator PlayButton;
+    public Animator button;
     private bool highlighted;
 
     public void Start()
     {
-        PlayButton = GetComponent<Animator>();
+        button = GetComponent<Animator>();
+        button.SetBool("Default", true);
         highlighted = false;
+        
     }
 
     public void onButtonHighlighted()
     {
         highlighted = !highlighted;
-        PlayButton.SetBool("Highlighted", highlighted);
+        button.SetBool("Highlighted", highlighted);
 
     }
 
