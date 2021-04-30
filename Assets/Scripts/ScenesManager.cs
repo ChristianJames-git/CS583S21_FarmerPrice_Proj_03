@@ -1,54 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class ScenesManager : MonoBehaviour
 {
-    public Animator button;
+    private Animator button;
     private bool highlighted;
+    private GameManager gm;
 
     public void Start()
     {
+        gm = GameManager.Instance;
         button = GetComponent<Animator>();
         button.SetBool("Default", true);
         highlighted = false;
-        
     }
 
     public void onButtonHighlighted()
     {
         highlighted = !highlighted;
         button.SetBool("Highlighted", highlighted);
-
     }
 
     public void onPlayGameButtonClicked()
     {
-        SceneManager.LoadScene("GameScene");
-
+        gm.ChangeScene("GameScene");
     }
 
     public void onMainMenuButtonClicked()
     {
-
-        SceneManager.LoadScene("MainMenu");
+        gm.ChangeScene("MainMenu");
     }
 
     public void onHowToPlayButtonClicked()
     {
-
-        SceneManager.LoadScene("HowToPlay");
+        gm.ChangeScene("HowToPlay");
     }
     public void onQuitClicked()
     {
-        Debug.Log("On Quit Button Clicked.");
-
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
             Application.Quit();
         #endif
-
     }
 }

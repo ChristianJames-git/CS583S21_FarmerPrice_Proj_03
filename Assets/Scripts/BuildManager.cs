@@ -13,6 +13,7 @@ public class BuildManager : MonoBehaviour
     private float[,] turretDamages; //[turret type, turret level]
     private float[,] turretFireRates;
     private float[,] turretRanges;
+    public Transform Bullets;
 
     public bool inBuildMode;
     public bool inUpgradeMode;
@@ -20,7 +21,7 @@ public class BuildManager : MonoBehaviour
     private Color orange;
 
     [Header("UI")]
-    public GameObject TurretUI;
+    public GameObject ModeToggleUI;
     public Image B;
     public Sprite B_Up;
     public Sprite B_Down;
