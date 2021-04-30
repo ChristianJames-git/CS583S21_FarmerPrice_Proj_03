@@ -5,7 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
+    public Animator PlayButton;
 
+    public void Start()
+    {
+        PlayButton = GetComponent<Animator>();
+    }
+
+    public void onPlayGameButtonHighlighted()
+    {
+        PlayButton.SetTrigger("Highlighted");
+
+    }
 
     public void onPlayGameButtonClicked()
     {
