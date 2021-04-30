@@ -91,7 +91,7 @@ public class BuildManager : MonoBehaviour
     private void InstantiateTurretValues()
     {
         turretDamages = new float[3, 3] { { 5, 10, 15 }, { 20, 50, 120 }, { 8, 10, 12 } };
-        turretFireRates = new float[3, 3] { { 1, 1, 1 }, { 3, 3.5f, 4 }, { 1, 0.5f, 0.2f } };
+        turretFireRates = new float[3, 3] { { 1, 1, 1 }, { 0.5f, 0.3f, 0.2f }, { 1, 2, 3 } };
         turretRanges = new float[3, 3] { { 3, 4, 5 }, { 4, 6, 8 }, { 2, 2, 3 } };
     }
 
