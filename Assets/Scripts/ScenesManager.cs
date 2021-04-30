@@ -6,15 +6,18 @@ using UnityEngine.SceneManagement;
 public class ScenesManager : MonoBehaviour
 {
     public Animator PlayButton;
+    private bool highlighted;
 
     public void Start()
     {
         PlayButton = GetComponent<Animator>();
+        highlighted = false;
     }
 
     public void onPlayGameButtonHighlighted()
     {
-        PlayButton.SetTrigger("Highlighted");
+        highlighted = !highlighted;
+        PlayButton.SetBool("Highlighted", highlighted);
 
     }
 
