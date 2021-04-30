@@ -3,23 +3,22 @@
 public class Waypoints : MonoBehaviour
 {
     //static so objects can access it without a direct reference
-    private GameManager gm;
+    [SerializeField] private LevelCreation lc;
     public static Transform[] points;
     public Transform Waypoint;
 
     private void Awake()
     {
-        gm = GameManager.Instance;
-        for (int i = 1, j = 0; i < gm.mapZ; i += 2, j++)
+        for (int i = 1, j = 0; i < lc.mapZ; i += 2, j++)
         {
             if (j % 2 == 0)
                 Instantiate(Waypoint, gameObject.transform).position = new Vector3(0, 0, i);
-            Instantiate(Waypoint, gameObject.transform).position = new Vector3(gm.mapX - 1, 0, i);
+            Instantiate(Waypoint, gameObject.transform).position = new Vector3(lc.mapX - 1, 0, i);
             if (j % 2 == 1)
                 Instantiate(Waypoint, gameObject.transform).position = new Vector3(0, 0, i);
         }
-        if (gm.mapZ % 2 == 1)
-            Instantiate(Waypoint, gameObject.transform).position = new Vector3(gm.mapX - 1, 0, gm.mapZ - 1);
+        if (lc.mapZ % 2 == 1)
+            Instantiate(Waypoint, gameObject.transform).position = new Vector3(lc.mapX - 1, 0, lc.mapZ - 1);
         points = new Transform[transform.childCount];
 
         //go through all the children of this object and add them to the array in order
