@@ -11,6 +11,8 @@ public class BuildManager : MonoBehaviour
     public GameObject turret1, turret2, turret3;
     private List<GameObject> turretPrefabs;
     private float[,] turretDamages; //[turret type, turret level]
+    private float[,] turretFireRates;
+    private float[,] turretRanges;
 
     public bool inBuildMode;
     public bool inUpgradeMode;
@@ -44,7 +46,7 @@ public class BuildManager : MonoBehaviour
         instance = this;
         turretPrefabs = new List<GameObject>() { turret1, turret2, turret3 };
         turretSprites = new List<Sprite>() { turret1Sprite, turret2Sprite, turret3Sprite };
-        turretDamages = new float[3, 3] { { 5, 10, 20 } , { 20, 40, 80 } , { 2, 5, 10 } };
+        InstantiateTurretValues();
         orange = new Color(1, 0.45f, 0, 1);
     }
 
@@ -84,6 +86,13 @@ public class BuildManager : MonoBehaviour
             E.color = Color.white;
             E.sprite = E_Up;
         }
+    }
+
+    private void InstantiateTurretValues()
+    {
+        turretDamages = new float[3, 3] { { 5, 10, 15 }, { 20, 50, 120 }, { 8, 10, 12 } };
+        turretFireRates = new float[3, 3] { { 1, 1, 1 }, { 3, 3.5f, 4 }, { 1, 0.5f, 0.2f } };
+        turretRanges = new float[3, 3] { { 3, 4, 5 }, { 4, 6, 8 }, { 1, 2, 3 } };
     }
 
     private void BPress(bool inMode)
@@ -149,6 +158,9 @@ public class BuildManager : MonoBehaviour
         script.turretScript = turret.GetComponent<Turret>();
         script.turretColor = turret.GetComponentInChildren<Renderer>().material;
         script.turretType = currentTurretDisplayed;
+        script.turretScript.damage = turretDamages[currentTurretDisplayed, 0];
+        script.turretScript.fireRate = turretFireRates[currentTurretDisplayed, 0];
+        script.turretScript.range = turretRanges[currentTurretDisplayed, 0];
         UpgradeTurret(script);
     }
 
@@ -172,6 +184,8 @@ public class BuildManager : MonoBehaviour
                 break;
         }
         script.turretScript.damage = turretDamages[script.turretType, script.turretLevel++];
+        script.turretScript.fireRate = turretFireRates[script.turretType, script.turretLevel];
+        script.turretScript.range = turretRanges[script.turretType, script.turretLevel];
         script.turretColor.color = newColor;
         script.baseColor = newColor;
     }
