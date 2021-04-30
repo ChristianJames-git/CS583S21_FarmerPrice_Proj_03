@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     private float fireCountdown = 0f;
     public int targetType = 0; //0:Nearest ; 1:Oldest ; 2:Strongest
     public float damage = 5;
+    public float bulletDamageRadius;
 
     [Header("Don't Change")]
     public Transform PartToRotate;
@@ -77,6 +78,6 @@ public class Turret : MonoBehaviour
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, BuildManager.instance.Bullets);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
-            bullet.Follow(target, damage);
+            bullet.Follow(target, damage, bulletDamageRadius);
     }
 }

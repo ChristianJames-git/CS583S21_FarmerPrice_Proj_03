@@ -3,12 +3,14 @@
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-    private float speed = 20f;
+    public float speed;
+    private float explosionRadius;
     private float damage;
-    public void Follow (Transform newTarget, float newDamage)
+    public void Follow (Transform newTarget, float newDamage, float damageRadius)
     {
         target = newTarget;
         damage = newDamage;
+        explosionRadius = damageRadius;
     }
 
     // Update is called once per frame
@@ -30,12 +32,26 @@ public class Bullet : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * distPerFrame, Space.World);
+        transform.LookAt(target);
     }
 
     private void HitTarget()
     {
-        EnemyBase enemy = target.gameObject.GetComponent<EnemyBase>();
-        enemy.health -= damage;
+        if (explosionRadius != 0)
+            Explode();
+        else
+            Damage(target.gameObject.GetComponent<EnemyBase>());
         Destroy(gameObject);
+    }
+    private void Explode()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in hitColliders)
+            if (collider.tag == "Enemy")
+                Damage(collider.gameObject.GetComponent<EnemyBase>());
+    }
+    private void Damage(EnemyBase enemy)
+    {
+        enemy.health -= damage;
     }
 }

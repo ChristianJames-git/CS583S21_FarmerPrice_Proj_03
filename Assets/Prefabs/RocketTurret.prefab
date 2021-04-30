@@ -129,12 +129,12 @@ MonoBehaviour:
   range: 4
   fireRate: 1
   targetType: 0
+  damage: 5
   PartToRotate: {fileID: 6113634722708161476}
   turnSpeed: 10
-  bulletPrefab: {fileID: 675257481076401281, guid: 0eabd61169392e24eb7aba9983a81ac3,
+  bulletPrefab: {fileID: 5568188598500179107, guid: c656a5e4be9b43f4cb14aa69f6179758,
     type: 3}
   firePoint: {fileID: 6113634722772205542}
-  damage: 5
 --- !u!1 &6113634722708161477
 GameObject:
   m_ObjectHideFlags: 0
