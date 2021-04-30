@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 76192795827928595}
   - component: {fileID: 76192795827928620}
   - component: {fileID: 76192795827928594}
-  - component: {fileID: 6381099885003784711}
   m_Layer: 0
   m_Name: First Person Player
   m_TagString: Untagged
@@ -193,33 +192,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bfc35ce00524baf9f7721acf99a748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
   speed: 12
   gravity: -9.81
   jumpHeight: 3
+  groundChecker: {fileID: 0}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &6381099885003784711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76192795827928621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47464b12fb0bd0241b19d2259026aea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildAreaModel: {fileID: 0}
-  openAreaModel: {fileID: 0}
-  WallNS: {fileID: 0}
-  WallWE: {fileID: 0}
-  Ground: {fileID: 0}
-  BuildPlatforms: {fileID: 0}
-  OpenPaths: {fileID: 0}
-  Boundaries: {fileID: 0}
 --- !u!1 &76192796197601292
 GameObject:
   m_ObjectHideFlags: 0
