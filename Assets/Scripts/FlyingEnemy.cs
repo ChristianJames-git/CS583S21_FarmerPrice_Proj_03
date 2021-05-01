@@ -7,25 +7,49 @@ public class FlyingEnemy : EnemyBase
 
     public float flightHeight;
 
-    private void Start()
+    protected new void Start()
     {
         //grab the first target to move towards
         pointIndex = 0;
-        target = Waypoints.points[pointIndex];
+        target = Waypoints.points[pointIndex].position + new Vector3(0, flightHeight, 0);
 
         //set the gameobject to be at the flying height
         transform.position = new Vector3(transform.position.x, transform.position.y + flightHeight, transform.position.z);
     }
 
-    protected void FindWaypoint()
+    protected new void FixedUpdate()
+    {
+        FindWayPoint();
+
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        //direction vector points form this object to the target
+        Vector3 dir = target - transform.position;
+
+
+        //move the enemy if not in the map
+        if (GameObject.Find("MapManager").GetComponent<MapManager>().inMap == false)
+        {
+            transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        }
+    }
+
+    protected new void FindWayPoint()
     {
         // check if this enemy has reached the target
-        if (Vector3.Distance(transform.position - new Vector3(0, -flightHeight, 0), target.position) <= 0.2f)//enemy is flying so i will always be above the waypoints
+        if (Vector3.Distance(transform.position - new Vector3(0, -flightHeight, 0), target) <= 0.2f)//enemy is flying so i will always be above the waypoints
         {
             //find the next target
             pointIndex++;
             if (Waypoints.points.Length > pointIndex)
-                target = Waypoints.points[pointIndex];
+            {
+                target = Waypoints.points[pointIndex].position + new Vector3(0, flightHeight, 0); ;
+            }
+                
             else
                 Destroy(this.gameObject);
         }
