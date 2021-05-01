@@ -49,17 +49,13 @@ public class Bullet : MonoBehaviour
         if (explosionRadius != 0)
             Explode();
         else
-            Damage(target.gameObject.GetComponent<EnemyBase>());
+            target.gameObject.GetComponent<EnemyBase>().Hit(damage);
     }
     private void Explode()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in hitColliders)
             if (collider.tag == "Enemy")
-                Damage(collider.gameObject.GetComponent<EnemyBase>());
-    }
-    private void Damage(EnemyBase enemy)
-    {
-        enemy.Hit(damage);
+                collider.gameObject.GetComponent<EnemyBase>().Hit(damage);
     }
 }
