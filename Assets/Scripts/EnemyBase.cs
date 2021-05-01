@@ -39,7 +39,7 @@ public class EnemyBase : MonoBehaviour
     protected void FindWayPoint()
     {
         //check if this enemy has reached the target
-        if (Vector3.Distance(transform.position, target) <= 0.2f)
+        if (Vector3.Distance(transform.position, target) <= 0.1f)
         {
             //find the next target
             pointIndex++;
@@ -51,7 +51,7 @@ public class EnemyBase : MonoBehaviour
     }
 
     //method to deal with the enemy taking damage
-    public void Hit(int damage)
+    public void Hit(float damage)
     {
         //subtract the amount of damage form the enemy health
         health -= damage;

@@ -29,6 +29,7 @@ public class FlyingEnemy : EnemyBase
 
         //direction vector points form this object to the target
         Vector3 dir = target - transform.position;
+        print(target.ToString());
 
 
         //move the enemy if not in the map
@@ -41,8 +42,9 @@ public class FlyingEnemy : EnemyBase
     protected new void FindWayPoint()
     {
         // check if this enemy has reached the target
-        if (Vector3.Distance(transform.position - new Vector3(0, -flightHeight, 0), target) <= 0.2f)//enemy is flying so i will always be above the waypoints
+        if (Vector3.Distance(transform.position + (Vector3.down * flightHeight), target) <= 0.2f)//enemy is flying so it will always be above the waypoints
         {
+            print("hello");
             //find the next target
             pointIndex++;
             if (Waypoints.points.Length > pointIndex)
