@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class BasicTurret : TurretBase
+﻿public class BasicTurret : TurretBase
 {
     //Stats by level
     private float[] damages = new float[3] { 10, 25, 65 };
