@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4509588840990007953}
   - component: {fileID: 3881706526006982700}
   m_Layer: 0
-  m_Name: LaserTower
+  m_Name: LaserTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,19 +123,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3881706526006982699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae3cf6aa0e697b4ca037977c9cdcab3, type: 3}
+  m_Script: {fileID: 11500000, guid: 841d54bf3e297d54eb1da2a747a81072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  range: 4
-  fireRate: 1
   targetType: 0
-  damage: 5
   PartToRotate: {fileID: 4116288227490276405}
-  turnSpeed: 10
+  firePoint: {fileID: 4116288227560345758}
   bulletPrefab: {fileID: 675257481076401281, guid: 0eabd61169392e24eb7aba9983a81ac3,
     type: 3}
-  firePoint: {fileID: 4116288227560345758}
 --- !u!1 &4116288227490276404
 GameObject:
   m_ObjectHideFlags: 0

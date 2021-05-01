@@ -11,11 +11,6 @@ public class BuildManager : MonoBehaviour
     public Transform TurretsContainer;
     public GameObject turret1, turret2, turret3;
     private List<GameObject> turretPrefabs;
-    //private float[,] turretDamages; //[turret type, turret level]
-    //private float[,] turretFireRates;
-    //private float[,] turretRanges;
-    //private float[,] bulletDamageRadius;
-    //private float[,] bulletSpeeds;
     public Transform Bullets;
 
     [Header("Modes")]

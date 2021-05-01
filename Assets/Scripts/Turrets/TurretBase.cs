@@ -18,7 +18,7 @@ public abstract class TurretBase : MonoBehaviour
     public Transform PartToRotate;
     public Transform firePoint;
     protected float turnSpeed = 10f;
-    private GameObject bulletPrefab;
+    public GameObject bulletPrefab;
 
 
 
@@ -83,5 +83,8 @@ public abstract class TurretBase : MonoBehaviour
             bullet.Follow(target, damage, bulletDamageRadius, bulletSpeed);
     }
 
-    public abstract void UpdateStats(int turretLevel);
+    public virtual void UpdateStats(int turretLevel) {
+        fireRate = 1;
+        bulletDamageRadius = 0;
+    }
 }

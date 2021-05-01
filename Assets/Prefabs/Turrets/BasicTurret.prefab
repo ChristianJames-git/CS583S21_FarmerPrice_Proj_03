@@ -48,7 +48,8 @@ MonoBehaviour:
   targetType: 0
   PartToRotate: {fileID: 3070834019427842479}
   firePoint: {fileID: 1487788079371787365}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 675257481076401281, guid: 0eabd61169392e24eb7aba9983a81ac3,
+    type: 3}
 --- !u!1 &2857867449617421045
 GameObject:
   m_ObjectHideFlags: 0
