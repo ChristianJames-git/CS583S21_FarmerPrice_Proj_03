@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour
 {
     public float speed = 2f;
     public float health = 200;
@@ -44,14 +44,13 @@ public class EnemyBase : MonoBehaviour
             //find the next target
             pointIndex++;
             if (Waypoints.points.Length > pointIndex)
-            {
-                target = Waypoints.points[pointIndex].position;
-            }
-
+                target = findTarget();
             else
                 Destroy(this.gameObject);
         }
     }
+
+    protected abstract Vector3 findTarget();
 
     //method to deal with the enemy taking damage
     public void Hit(float damage)

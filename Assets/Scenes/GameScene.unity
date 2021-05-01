@@ -1646,6 +1646,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5619690943946917112, guid: 212035a3fa7304667b37dcc20aa0d32d,
+        type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 212035a3fa7304667b37dcc20aa0d32d, type: 3}
@@ -1948,6 +1953,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1841386230}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1132877540
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1531824694}
+    m_Modifications:
+    - target: {fileID: 6081444943212390933, guid: 93864b697b4be4fd096c625c9b2c750a,
+        type: 3}
+      propertyPath: speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814599677316345648, guid: 93864b697b4be4fd096c625c9b2c750a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814599677316345648, guid: 93864b697b4be4fd096c625c9b2c750a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814599677316345648, guid: 93864b697b4be4fd096c625c9b2c750a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814599677316345648, guid: 93864b697b4be4fd096c625c9b2c750a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814599677316345654, guid: 93864b697b4be4fd096c625c9b2c750a,
+        type: 3}
+      propertyPath: m_Name
+      value: FlyingEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93864b697b4be4fd096c625c9b2c750a, type: 3}
+--- !u!4 &1132877541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6814599677316345648, guid: 93864b697b4be4fd096c625c9b2c750a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1132877540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1155237316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,8 +2161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topDownCam: {fileID: 63915367}
   firstPersonCam: {fileID: 1903898561}
-  inMap: 0
   player: {fileID: 0}
+  inMap: 0
 --- !u!4 &1242978444
 Transform:
   m_ObjectHideFlags: 0
@@ -2399,6 +2449,7 @@ Transform:
   - {fileID: 1092064714}
   - {fileID: 930015638}
   - {fileID: 1298622620}
+  - {fileID: 1132877541}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2999,6 +3050,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619690943946917112, guid: 212035a3fa7304667b37dcc20aa0d32d,
+        type: 3}
+      propertyPath: speed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 212035a3fa7304667b37dcc20aa0d32d, type: 3}
