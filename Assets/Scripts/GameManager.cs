@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] enemies;
-    private string enemyTag = "Enemy";
+    [HideInInspector] public GameObject[] enemies;
     public bool paused;
+    private string enemyTag = "Enemy";
 
     public static GameManager Instance { get; private set; }
 

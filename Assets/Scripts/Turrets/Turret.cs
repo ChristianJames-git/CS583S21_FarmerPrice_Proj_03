@@ -2,23 +2,24 @@
 
 public class Turret : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
 
     [Header("Attributes")]
+    public float damage = 5;
     public float range = 4f;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
     public int targetType = 0; //0:Nearest ; 1:Oldest ; 2:Strongest
-    public float damage = 5;
+    
     public float bulletDamageRadius;
     public float bulletSpeed;
 
-    [Header("Don't Change")]
+    [Header("References")]
     public Transform PartToRotate;
-    public float turnSpeed = 10f;
-
-    public GameObject bulletPrefab;
     public Transform firePoint;
+    private float turnSpeed = 10f;
+    public GameObject bulletPrefab;
+    
 
 
     // Start is called before the first frame update

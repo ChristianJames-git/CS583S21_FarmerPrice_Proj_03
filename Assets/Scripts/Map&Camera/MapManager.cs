@@ -6,7 +6,6 @@ public class MapManager : MonoBehaviour
 {
     public Camera topDownCam;
     public Camera firstPersonCam;
-    public GameObject player;
     public bool inMap;
 
     private void Start()

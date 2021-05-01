@@ -7,6 +7,7 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
+    [Header("Turrets")]
     public Transform TurretsContainer;
     public GameObject turret1, turret2, turret3;
     private List<GameObject> turretPrefabs;
@@ -17,32 +18,22 @@ public class BuildManager : MonoBehaviour
     private float[,] bulletSpeeds;
     public Transform Bullets;
 
+    [Header("Modes")]
     public bool inBuildMode;
     public bool inUpgradeMode;
     public bool inSellMode;
     private Color orange;
-
+ 
     [Header("UI")]
     public GameObject ModeToggleUI;
-    public Image B;
-    public Sprite B_Up;
-    public Sprite B_Down;
-    public Image U;
-    public Sprite U_Up;
-    public Sprite U_Down;
-    public Image Q;
-    public Sprite Q_Up;
-    public Sprite Q_Down;
-    public Image E;
-    public Sprite E_Up;
-    public Sprite E_Down;
-    public Image R;
-    public Sprite R_Up;
-    public Sprite R_Down;
+    public Image B, U, Q, E, R;
+    public Sprite B_Up, B_Down, U_Up, U_Down, Q_Up, Q_Down, E_Up, E_Down, R_Up, R_Down;
+
+    [Header("Turret Display")]
+    public Image turretToBuild;
     public Sprite turret1Sprite, turret2Sprite, turret3Sprite;
     private List<Sprite> turretSprites;
     private int currentTurretDisplayed = 0;
-    public Image turretToBuild;
 
     void Awake()
     {

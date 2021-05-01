@@ -5,9 +5,13 @@ using UnityEngine;
 [SerializeField]
 public class LevelCreation : MonoBehaviour
 {
-    public GameObject buildAreaModel, openAreaModel, WallNS, WallWE, Ground;
+    [Header("Map References")]
+    public GameObject buildAreaModel;
+    public GameObject openAreaModel, WallNS, WallWE, Ground;
     public Transform BuildPlatforms, OpenPaths, Boundaries, End;
-    public int mapX = 8, mapZ = 15;
+    [Header("Map Size")]
+    public int mapX = 8;
+    public int mapZ = 15;
 
     // Start is called before the first frame update
     void Start()
