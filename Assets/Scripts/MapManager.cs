@@ -6,21 +6,14 @@ public class MapManager : MonoBehaviour
 {
     public Camera topDownCam;
     public Camera firstPersonCam;
-    public bool inMap;
-    //public List<GameObject> enemies;
     public GameObject player;
+    private bool inMap;
 
     private void Start()
     {
         topDownCam.enabled = false;
         firstPersonCam.enabled = true;
         inMap = false;
-
-        //enemies = new List<GameObject>();
-        //foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        //{
-        //    enemies.Add(enemy);
-        //}
     }
 
     // Update is called once per frame
@@ -31,6 +24,7 @@ public class MapManager : MonoBehaviour
             topDownCam.enabled = !topDownCam.enabled;
             firstPersonCam.enabled = !firstPersonCam.enabled;
             inMap = !inMap;
+            GameManager.Instance.paused = inMap;
 
             if (inMap)
             {
@@ -38,11 +32,7 @@ public class MapManager : MonoBehaviour
                 Debug.Log("Cursor should be unlocked");
             }
             else
-            {
-                
                 Cursor.lockState = CursorLockMode.Locked;
-            }
-
         }
     }
 }

@@ -13,6 +13,8 @@ public class BuildManager : MonoBehaviour
     private float[,] turretDamages; //[turret type, turret level]
     private float[,] turretFireRates;
     private float[,] turretRanges;
+    private float[,] bulletDamageRadius;
+    private float[,] bulletSpeeds;
     public Transform Bullets;
 
     public bool inBuildMode;
@@ -91,9 +93,11 @@ public class BuildManager : MonoBehaviour
 
     private void InstantiateTurretValues()
     {
-        turretDamages = new float[3, 3] { { 5, 10, 15 }, { 20, 50, 120 }, { 8, 10, 12 } };
-        turretFireRates = new float[3, 3] { { 1, 1, 1 }, { 0.5f, 0.3f, 0.2f }, { 1, 2, 3 } };
+        turretDamages = new float[3, 3] { { 5, 10, 18 }, { 10, 30, 32 }, { 8, 10, 15 } };
+        turretFireRates = new float[3, 3] { { 1, 1, 1 }, { 0.25f, 0.4f, 0.75f }, { 1, 2, 3 } };
         turretRanges = new float[3, 3] { { 3, 4, 5 }, { 4, 6, 8 }, { 2, 2, 3 } };
+        bulletDamageRadius = new float[3, 3] { { 0, 0, 0 }, { 1, 1.5f, 2 }, { 0, 0, 0 } };
+        bulletSpeeds = new float[3, 3] { { 20, 20, 20 }, { 5, 8, 10 }, { 40, 40, 40 } };
     }
 
     private void BPress(bool inMode)
@@ -187,6 +191,8 @@ public class BuildManager : MonoBehaviour
         script.turretScript.damage = turretDamages[script.turretType, script.turretLevel];
         script.turretScript.fireRate = turretFireRates[script.turretType, script.turretLevel];
         script.turretScript.range = turretRanges[script.turretType, script.turretLevel];
+        script.turretScript.bulletDamageRadius = bulletDamageRadius[script.turretType, script.turretLevel];
+        script.turretScript.bulletSpeed = bulletSpeeds[script.turretType, script.turretLevel];
         script.turretColor.color = newColor;
         script.baseColor = newColor;
         script.turretLevel++;
