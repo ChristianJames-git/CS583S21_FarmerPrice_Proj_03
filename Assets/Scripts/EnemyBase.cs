@@ -5,17 +5,17 @@ public class EnemyBase : MonoBehaviour
     public float speed = 2f;
     public float health = 200;
 
-    private Transform target;
-    private int pointIndex;
+    protected Transform target;
+    protected int pointIndex;
 
-    private void Start()
+    protected void Start()
     {
         //grab the first target to move towards
         pointIndex = 0;
         target = Waypoints.points[pointIndex];
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (health <= 0)
         {
@@ -32,10 +32,11 @@ public class EnemyBase : MonoBehaviour
         {
             transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
         }
-        
-        
-            
 
+        FindWayPoint();
+    }
+    protected void FindWayPoint()
+    {
         //check if this enemy has reached the target
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
@@ -45,9 +46,7 @@ public class EnemyBase : MonoBehaviour
                 target = Waypoints.points[pointIndex];
             else
                 Destroy(this.gameObject);
-
         }
-   
     }
 
     //method to deal with the enemy taking damage
