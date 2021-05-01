@@ -14,5 +14,7 @@
         range = turretRanges[turretLevel];
         bulletDamageRadius = bulletDamageRadii[turretLevel];
         bulletSpeed = bulletSpeeds[turretLevel];
+
+        targetType = 0;
     }
 }

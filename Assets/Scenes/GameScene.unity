@@ -678,9 +678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b8adbdf22dd5e4f9b5db05041aa0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 174949116}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   hoverColor: {r: 0.5105638, g: 1, b: 0.3254717, a: 0.8}
-  rend: {fileID: 174949116}
   turret: {fileID: 0}
   turretColor: {fileID: 0}
   turretType: -1
@@ -1569,7 +1569,7 @@ PrefabInstance:
     - target: {fileID: 1592270822596044610, guid: 212035a3fa7304667b37dcc20aa0d32d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1592270822596044610, guid: 212035a3fa7304667b37dcc20aa0d32d,
         type: 3}
@@ -1649,7 +1649,7 @@ PrefabInstance:
     - target: {fileID: 5619690943946917112, guid: 212035a3fa7304667b37dcc20aa0d32d,
         type: 3}
       propertyPath: speed
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1963,12 +1963,17 @@ PrefabInstance:
     - target: {fileID: 6081444943212390933, guid: 93864b697b4be4fd096c625c9b2c750a,
         type: 3}
       propertyPath: speed
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6814599677316345648, guid: 93864b697b4be4fd096c625c9b2c750a,
         type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814599677316345648, guid: 93864b697b4be4fd096c625c9b2c750a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6814599677316345648, guid: 93864b697b4be4fd096c625c9b2c750a,
         type: 3}
@@ -2482,7 +2487,7 @@ PrefabInstance:
     - target: {fileID: 1592270822596044610, guid: 212035a3fa7304667b37dcc20aa0d32d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1592270822596044610, guid: 212035a3fa7304667b37dcc20aa0d32d,
         type: 3}
@@ -2558,6 +2563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619690943946917112, guid: 212035a3fa7304667b37dcc20aa0d32d,
+        type: 3}
+      propertyPath: speed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

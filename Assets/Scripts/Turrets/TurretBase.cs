@@ -12,7 +12,7 @@ public abstract class TurretBase : MonoBehaviour
     protected float bulletDamageRadius;
     protected float bulletSpeed;
 
-    public int targetType = 0; //0:Nearest ; 1:Oldest ; 2:Strongest
+    protected int targetType; //0:Nearest ; 1:Oldest ; 2:Strongest ; 3:RandomInRange
 
     [Header("References")]
     public Transform PartToRotate;
@@ -61,6 +61,9 @@ public abstract class TurretBase : MonoBehaviour
                 break;
             case 2:
                 target = GameManager.Instance.FindStrongestEnemy(range, transform);
+                break;
+            case 3:
+                target = GameManager.Instance.FindRandomEnemyInRange(range, transform);
                 break;
             default:
                 target = GameManager.Instance.FindNearestEnemy(range, transform);
