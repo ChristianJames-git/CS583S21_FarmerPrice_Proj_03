@@ -60,6 +60,6 @@ public class Bullet : MonoBehaviour
     }
     private void Damage(EnemyBase enemy)
     {
-        enemy.health -= damage;
+        enemy.Hit(damage);
     }
 }
