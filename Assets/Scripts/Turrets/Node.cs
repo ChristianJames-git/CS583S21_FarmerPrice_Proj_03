@@ -15,7 +15,7 @@ public class Node : MonoBehaviour
     public Material turretColor;
     public int turretType = -1;
     public int turretLevel = 0;
-    public Turret turretScript;
+    public TurretBase turretScript;
 
     private void Start()
     {

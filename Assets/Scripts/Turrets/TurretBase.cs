@@ -1,35 +1,35 @@
 ﻿using UnityEngine;
 
-public class Turret : MonoBehaviour
+public abstract class TurretBase : MonoBehaviour
 {
-    private Transform target;
+    protected Transform target;
 
     [Header("Attributes")]
-    public float damage = 5;
-    public float range = 4f;
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    protected float damage;
+    protected float range;
+    protected float fireRate;
+    private float fireCountdown = 0;
+    protected float bulletDamageRadius;
+    protected float bulletSpeed;
+
     public int targetType = 0; //0:Nearest ; 1:Oldest ; 2:Strongest
-    
-    public float bulletDamageRadius;
-    public float bulletSpeed;
 
     [Header("References")]
     public Transform PartToRotate;
     public Transform firePoint;
-    private float turnSpeed = 10f;
-    public GameObject bulletPrefab;
-    
+    protected float turnSpeed = 10f;
+    private GameObject bulletPrefab;
+
 
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         InvokeRepeating("FindTarget", 0f, 0.2f);
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (GameManager.Instance.paused == false)
         {
@@ -52,7 +52,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private void FindTarget ()
+    protected void FindTarget ()
     {
         switch (targetType)
         {
@@ -69,17 +69,19 @@ public class Turret : MonoBehaviour
     }
 
     //Range bubble draw
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    private void Shoot()
+    protected void Shoot()
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, BuildManager.instance.Bullets);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
             bullet.Follow(target, damage, bulletDamageRadius, bulletSpeed);
     }
+
+    public abstract void UpdateStats(int turretLevel);
 }
