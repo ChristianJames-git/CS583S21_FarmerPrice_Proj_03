@@ -17,7 +17,7 @@ public class playerMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("MapManager").GetComponent<MapManager>().inMap == false)
+        if (GameManager.Instance.paused == false)
         {
             isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
 
