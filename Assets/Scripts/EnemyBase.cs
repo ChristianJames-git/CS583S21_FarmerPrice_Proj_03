@@ -47,5 +47,17 @@ public class EnemyBase : MonoBehaviour
                 Destroy(this.gameObject);
 
         }
+   
+    }
+
+    //method to deal with the enemy taking damage
+    public void Hit(int damage)
+    {
+        //subtract the amount of damage form the enemy health
+        health -= damage;
+
+        //check if the enemy has died
+        if (health <= 0)
+            Destroy(this.gameObject);
     }
 }
