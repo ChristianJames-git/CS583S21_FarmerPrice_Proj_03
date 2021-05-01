@@ -3,14 +3,17 @@
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-    public float speed;
+    private float speed;
     private float explosionRadius;
     private float damage;
-    public void Follow (Transform newTarget, float newDamage, float damageRadius)
+    //public GameObject impactEffect;
+
+    public void Follow(Transform newTarget, float newDamage, float damageRadius, float bulletSpeed)
     {
         target = newTarget;
         damage = newDamage;
         explosionRadius = damageRadius;
+        speed = bulletSpeed;
     }
 
     // Update is called once per frame
@@ -22,26 +25,31 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        Vector3 dir = target.position - transform.position;
-        float distPerFrame = speed * Time.deltaTime;
-
-        if (dir.magnitude <= distPerFrame)
+        if (!GameManager.Instance.paused)
         {
-            HitTarget();
-            return;
-        }
+            Vector3 dir = target.position - transform.position;
+            float distPerFrame = speed * Time.deltaTime;
 
-        transform.Translate(dir.normalized * distPerFrame, Space.World);
-        transform.LookAt(target);
+            if (dir.magnitude <= distPerFrame)
+            {
+                HitTarget();
+                return;
+            }
+
+            transform.Translate(dir.normalized * distPerFrame, Space.World);
+            transform.LookAt(target);
+        }
     }
 
     private void HitTarget()
     {
+        Destroy(this.gameObject);
+        //GameObject effectInstance = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        //Destroy(effectInstance, 2f);
         if (explosionRadius != 0)
             Explode();
         else
             Damage(target.gameObject.GetComponent<EnemyBase>());
-        Destroy(gameObject);
     }
     private void Explode()
     {

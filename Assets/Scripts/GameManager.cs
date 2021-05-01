@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject[] enemies;
     private string enemyTag = "Enemy";
+    public bool paused;
 
     public static GameManager Instance { get; private set; }
 

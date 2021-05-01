@@ -11,6 +11,7 @@ public class Turret : MonoBehaviour
     public int targetType = 0; //0:Nearest ; 1:Oldest ; 2:Strongest
     public float damage = 5;
     public float bulletDamageRadius;
+    public float bulletSpeed;
 
     [Header("Don't Change")]
     public Transform PartToRotate;
@@ -29,7 +30,7 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("MapManager").GetComponent<MapManager>().inMap == false)
+        if (GameManager.Instance.paused == false)
         {
             if (target == null)
                 return;
@@ -78,6 +79,6 @@ public class Turret : MonoBehaviour
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, BuildManager.instance.Bullets);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
-            bullet.Follow(target, damage, bulletDamageRadius);
+            bullet.Follow(target, damage, bulletDamageRadius, bulletSpeed);
     }
 }

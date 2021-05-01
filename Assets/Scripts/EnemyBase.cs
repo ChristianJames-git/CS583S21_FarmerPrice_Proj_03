@@ -26,16 +26,12 @@ public class EnemyBase : MonoBehaviour
         //direction vector points form this object to the target
         Vector3 dir = target.position - transform.position;
 
-
         //move the enemy if not in the map
-        if (GameObject.Find("MapManager").GetComponent<MapManager>().inMap == false)
+        if (!GameManager.Instance.paused)
         {
             transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
         }
         
-        
-            
-
         //check if this enemy has reached the target
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
