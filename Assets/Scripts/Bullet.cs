@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     private float speed;
     private float explosionRadius;
     private float damage;
-    //public GameObject impactEffect;
+    public GameObject impactEffect;
 
     public void Follow(Transform newTarget, float newDamage, float damageRadius, float bulletSpeed)
     {
@@ -44,8 +44,8 @@ public class Bullet : MonoBehaviour
     private void HitTarget()
     {
         Destroy(this.gameObject);
-        //GameObject effectInstance = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        //Destroy(effectInstance, 2f);
+        GameObject effectInstance = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectInstance, 2f);
         if (explosionRadius != 0)
             Explode();
         else
