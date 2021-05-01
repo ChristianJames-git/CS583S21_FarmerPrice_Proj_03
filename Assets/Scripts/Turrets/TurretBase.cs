@@ -20,6 +20,9 @@ public abstract class TurretBase : MonoBehaviour
     protected float turnSpeed = 10f;
     public GameObject bulletPrefab;
 
+    public LineRenderer laser;
+    protected bool useLaser;
+
 
 
     // Start is called before the first frame update
@@ -86,8 +89,5 @@ public abstract class TurretBase : MonoBehaviour
             bullet.Follow(target, damage, bulletDamageRadius, bulletSpeed);
     }
 
-    public virtual void UpdateStats(int turretLevel) {
-        fireRate = 1;
-        bulletDamageRadius = 0;
-    }
+    public abstract void UpdateStats(int turretLevel);
 }

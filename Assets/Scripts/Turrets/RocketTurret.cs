@@ -7,6 +7,11 @@
     private float[] bulletDamageRadii = new float[3] { 1, 1.5f, 2 };
     private float[] bulletSpeeds = new float[3] { 5, 8, 10 };
 
+    public RocketTurret()
+    {
+        targetType = 0;
+    }
+
     public override void UpdateStats(int turretLevel)
     {
         damage = damages[turretLevel];
@@ -14,7 +19,5 @@
         range = turretRanges[turretLevel];
         bulletDamageRadius = bulletDamageRadii[turretLevel];
         bulletSpeed = bulletSpeeds[turretLevel];
-
-        targetType = 0;
     }
 }
