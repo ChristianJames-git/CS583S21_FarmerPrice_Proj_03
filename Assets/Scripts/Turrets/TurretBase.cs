@@ -20,7 +20,7 @@ public abstract class TurretBase : MonoBehaviour
     protected float turnSpeed = 10f;
     public GameObject bulletPrefab;
 
-    public LineRenderer laser;
+    public LineRenderer laserRend;
     protected bool useLaser;
 
 
@@ -37,22 +37,34 @@ public abstract class TurretBase : MonoBehaviour
         if (GameManager.Instance.paused == false)
         {
             if (target == null)
-                return;
-
-            //Rotate to Target
-            Vector3 dir = target.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = Quaternion.Lerp(PartToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-            PartToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-            //FireRate
-            if (fireCountdown <= 0)
             {
-                Shoot();
-                fireCountdown = 1f / fireRate;
+                if (useLaser && laserRend.enabled)
+                    laserRend.enabled = false;
+                return;
             }
-            fireCountdown -= Time.deltaTime;
+
+            RotateToTarget();
+
+            if (useLaser)
+                Laser();
+            else
+            {
+                if (fireCountdown <= 0)
+                {
+                    Shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+                fireCountdown -= Time.deltaTime;
+            }
         }
+    }
+
+    private void RotateToTarget()
+    {
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(PartToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        PartToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     protected void FindTarget ()
@@ -87,6 +99,20 @@ public abstract class TurretBase : MonoBehaviour
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
             bullet.Follow(target, damage, bulletDamageRadius, bulletSpeed);
+    }
+
+    private void Laser()
+    {
+        if (!laserRend.enabled)
+            laserRend.enabled = true;
+        laserRend.SetPosition(0, firePoint.position);
+        laserRend.SetPosition(1, target.position);
+        if (fireCountdown <= 0)
+        {
+            target.gameObject.GetComponent<EnemyBase>().Hit(damage);
+            fireCountdown = 1f / fireRate;
+        }
+        fireCountdown -= Time.deltaTime;
     }
 
     public abstract void UpdateStats(int turretLevel);
