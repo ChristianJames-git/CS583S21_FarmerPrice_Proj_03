@@ -108,3 +108,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   health: 200
+  enemyMoneyDrop: 100
+  currencyManager: {fileID: 0}

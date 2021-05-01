@@ -8,6 +8,9 @@ public abstract class EnemyBase : MonoBehaviour
     protected Vector3 target;
     protected int pointIndex;
 
+    public int enemyMoneyDrop;
+    public GameObject currencyManager;
+
     protected void Start()
     {
         //grab the first target to move towards
@@ -60,6 +63,13 @@ public abstract class EnemyBase : MonoBehaviour
 
         //check if the enemy has died
         if (health <= 0)
+        {
+            //line below adds the enemyMoneyDrop value to the players balance when the enemy dies
+            currencyManager.GetComponent<currencyManager>().currentBal += enemyMoneyDrop;
+            Debug.Log("Enemy has been killed");
+            Debug.Log(currencyManager.GetComponent<currencyManager>().currentBal);
             Destroy(this.gameObject);
+        }
+            
     }
 }
