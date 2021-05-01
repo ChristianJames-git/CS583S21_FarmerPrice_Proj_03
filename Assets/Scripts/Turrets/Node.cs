@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    public Color baseColor;
-    public Color hoverColor;
     public Renderer rend;
 
+    [Header("Colors")]
+    public Color baseColor;
+    public Color hoverColor;
+
+    [Header("Turret References")]
     public GameObject turret = null;
     public Material turretColor;
     public int turretType = -1;
     public int turretLevel = 0;
-    public Turret turretScript;
+    public TurretBase turretScript;
 
     private void Start()
     {

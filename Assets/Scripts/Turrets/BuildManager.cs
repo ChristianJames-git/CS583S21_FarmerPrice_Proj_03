@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,47 +6,34 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
+    [Header("Turrets")]
     public Transform TurretsContainer;
     public GameObject turret1, turret2, turret3;
     private List<GameObject> turretPrefabs;
-    private float[,] turretDamages; //[turret type, turret level]
-    private float[,] turretFireRates;
-    private float[,] turretRanges;
     public Transform Bullets;
 
+    [Header("Modes")]
     public bool inBuildMode;
     public bool inUpgradeMode;
     public bool inSellMode;
     private Color orange;
-
+ 
     [Header("UI")]
     public GameObject ModeToggleUI;
-    public Image B;
-    public Sprite B_Up;
-    public Sprite B_Down;
-    public Image U;
-    public Sprite U_Up;
-    public Sprite U_Down;
-    public Image Q;
-    public Sprite Q_Up;
-    public Sprite Q_Down;
-    public Image E;
-    public Sprite E_Up;
-    public Sprite E_Down;
-    public Image R;
-    public Sprite R_Up;
-    public Sprite R_Down;
+    public Image B, U, Q, E, R;
+    public Sprite B_Up, B_Down, U_Up, U_Down, Q_Up, Q_Down, E_Up, E_Down, R_Up, R_Down;
+
+    [Header("Turret Display")]
+    public Image turretToBuild;
     public Sprite turret1Sprite, turret2Sprite, turret3Sprite;
     private List<Sprite> turretSprites;
     private int currentTurretDisplayed = 0;
-    public Image turretToBuild;
 
     void Awake()
     {
         instance = this;
         turretPrefabs = new List<GameObject>() { turret1, turret2, turret3 };
         turretSprites = new List<Sprite>() { turret1Sprite, turret2Sprite, turret3Sprite };
-        InstantiateTurretValues();
         orange = new Color(1, 0.45f, 0, 1);
     }
 
@@ -89,13 +75,7 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    private void InstantiateTurretValues()
-    {
-        turretDamages = new float[3, 3] { { 5, 10, 15 }, { 20, 50, 120 }, { 8, 10, 12 } };
-        turretFireRates = new float[3, 3] { { 1, 1, 1 }, { 0.5f, 0.3f, 0.2f }, { 1, 2, 3 } };
-        turretRanges = new float[3, 3] { { 3, 4, 5 }, { 4, 6, 8 }, { 2, 2, 3 } };
-    }
-
+    //Mode Toggle Buttons
     private void BPress(bool inMode)
     {
         if (inMode)
@@ -113,7 +93,6 @@ public class BuildManager : MonoBehaviour
             B.sprite = B_Down;
         }
     }
-
     private void UPress(bool inMode)
     {
         if (inMode)
@@ -131,7 +110,6 @@ public class BuildManager : MonoBehaviour
             U.sprite = U_Down;
         }
     }
-
     private void RPress(bool inMode)
     {
         if (inMode)
@@ -150,21 +128,18 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    //Buttons
+    //Mode Effects
     public void BuildTurret (Node script)
     {
         //Add money checking and subtraction
         GameObject turret = (GameObject)Instantiate(turretPrefabs[currentTurretDisplayed], script.transform.position, script.transform.rotation, TurretsContainer);
         script.turret = turret;
-        script.turretScript = turret.GetComponent<Turret>();
+        script.turretScript = turret.GetComponent<TurretBase>();
+        script.turretScript.UpdateStats(0);
         script.turretColor = turret.GetComponentInChildren<Renderer>().material;
         script.turretType = currentTurretDisplayed;
-        script.turretScript.damage = turretDamages[currentTurretDisplayed, 0];
-        script.turretScript.fireRate = turretFireRates[currentTurretDisplayed, 0];
-        script.turretScript.range = turretRanges[currentTurretDisplayed, 0];
         UpgradeTurret(script);
     }
-
     public void UpgradeTurret(Node script)
     {
         Color newColor;
@@ -184,14 +159,11 @@ public class BuildManager : MonoBehaviour
                 newColor = Color.white;
                 break;
         }
-        script.turretScript.damage = turretDamages[script.turretType, script.turretLevel];
-        script.turretScript.fireRate = turretFireRates[script.turretType, script.turretLevel];
-        script.turretScript.range = turretRanges[script.turretType, script.turretLevel];
+        script.turretScript.UpdateStats(script.turretLevel);
         script.turretColor.color = newColor;
         script.baseColor = newColor;
         script.turretLevel++;
     }
-
     public void SellTurret(Node script)
     {
         Destroy(script.turret);

@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] enemies;
+    [HideInInspector] public GameObject[] enemies;
+    public bool paused;
     private string enemyTag = "Enemy";
 
     public static GameManager Instance { get; private set; }
@@ -84,6 +86,23 @@ public class GameManager : MonoBehaviour
         }
         if (strongestEnemy != null)
             return strongestEnemy.transform;
+        else
+            return null;
+    }
+
+    public Transform FindRandomEnemyInRange(float range, Transform turret)
+    {
+        List<Transform> inRange = new List<Transform>();
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                if (Vector3.Distance(turret.position, enemy.transform.position) <= range)
+                    inRange.Add(enemy.transform);
+            }
+        }
+        if (inRange.Count != 0)
+            return inRange[Random.Range(0, inRange.Count)];
         else
             return null;
     }
