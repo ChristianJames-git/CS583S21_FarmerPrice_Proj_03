@@ -66,8 +66,6 @@ public abstract class EnemyBase : MonoBehaviour
         {
             //line below adds the enemyMoneyDrop value to the players balance when the enemy dies
             currencyManager.GetComponent<currencyManager>().currentBal += enemyMoneyDrop;
-            Debug.Log("Enemy has been killed");
-            Debug.Log(currencyManager.GetComponent<currencyManager>().currentBal);
             Destroy(this.gameObject);
         }
             

@@ -10,7 +10,7 @@ public class currencyManager : MonoBehaviour
 
     private void Awake()
     {
-        currentBal = 0;
+        currentBal = 700;
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class currencyManager : MonoBehaviour
 
     public bool balanceCheck(int turretPrice)
     {
-        if (currentBal > turretPrice)
+        if (currentBal >= turretPrice)
             return true;
         else
             return false;
