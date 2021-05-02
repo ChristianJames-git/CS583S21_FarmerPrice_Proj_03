@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    private Transform spawnLocation;
+    public Transform spawnLocation;
     public float spawnTimer;
     public float lifeTime;
 
-    private void Start()
+    public void Start()
     {
-        spawnLocation = GameObject.Find("Start").GetComponent<Transform>();
+        spawnLocation = transform;
     }
 
     IEnumerator Spawn()
@@ -19,10 +19,13 @@ public class EnemySpawner : MonoBehaviour
         //keep spawning until this object is gone
         while(true)
         {
-            GameObject.Instantiate(enemyPrefab, spawnLocation.position, Quaternion.identity);
+            GameObject.Instantiate(enemyPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             yield return new WaitForSeconds(spawnTimer);
         }
+    }
 
+    private void Update()
+    {
         //check if this spawber has exceeded it's lifetime
         if (lifeTime < 0)
             Destroy(this.gameObject);

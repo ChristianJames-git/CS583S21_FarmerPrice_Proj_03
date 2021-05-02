@@ -53,7 +53,8 @@ public class WaveSpawner : MonoBehaviour
 
     private void Awake()
     {
-        waves = new List<SpawnContainer> { };
+        waves = new List<SpawnContainer> {new SpawnContainer(1, 2, 10, flyingEnemy) };
+
         //start timer at 0
         timer = 0;
     }
@@ -68,7 +69,7 @@ public class WaveSpawner : MonoBehaviour
             EnemySpawner temp;
 
             //check is the next wave should spawn
-            if (waves[0].GetTimeToSpawn() >= timer)
+            if (waves[0].GetTimeToSpawn() <= timer)
             {
                 //spawn that enemy spawner
                 temp = Transform.Instantiate(spawner, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<EnemySpawner>();
