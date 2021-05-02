@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public Transform spawnLocation;
+    private Transform spawnLocation;
     public float spawnTimer;
     public float lifeTime;
 
     private void Start()
     {
-        StartCoroutine(Spawn());
+        spawnLocation = GameObject.Find("Start").GetComponent<Transform>();
     }
 
     IEnumerator Spawn()
@@ -22,13 +22,23 @@ public class EnemySpawner : MonoBehaviour
             GameObject.Instantiate(enemyPrefab, spawnLocation.position, Quaternion.identity);
             yield return new WaitForSeconds(spawnTimer);
         }
-    }
 
-    private void Update()
-    {
+        //check if this spawber has exceeded it's lifetime
         if (lifeTime < 0)
             Destroy(this.gameObject);
         else
             lifeTime -= Time.deltaTime;
+    }
+
+    //method used to update settings and start spawning sequence during runtime to work with WaveSpawner
+    public void SetSettings(float spawnClock, float timeAlive, GameObject enemyType)
+    {
+        //update settings
+        spawnTimer = spawnClock;
+        lifeTime = timeAlive;
+        enemyPrefab = enemyType;
+
+        //start spawning
+        StartCoroutine(Spawn());
     }
 }
