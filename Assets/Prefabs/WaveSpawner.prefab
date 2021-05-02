@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 5515864694633804311, guid: b21ffed94fcde4d0a9c7fcbe52762636, type: 3}
-  flyingEnemy: {fileID: 1592270822596044612, guid: 212035a3fa7304667b37dcc20aa0d32d,
+  flyingEnemy: {fileID: 6814599677316345654, guid: 93864b697b4be4fd096c625c9b2c750a,
     type: 3}
-  groundEnemy: {fileID: 6814599677316345654, guid: 93864b697b4be4fd096c625c9b2c750a,
+  groundEnemy: {fileID: 1592270822596044612, guid: 212035a3fa7304667b37dcc20aa0d32d,
     type: 3}

@@ -53,7 +53,8 @@ public class WaveSpawner : MonoBehaviour
 
     private void Awake()
     {
-        waves = new List<SpawnContainer> {new SpawnContainer(1, 2, 10, flyingEnemy) };
+        waves = new List<SpawnContainer> {new SpawnContainer(1, 2, 10, flyingEnemy),
+                                          new SpawnContainer(5, 1, 10, groundEnemy)};
 
         //start timer at 0
         timer = 0;
