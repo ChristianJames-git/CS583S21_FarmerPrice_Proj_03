@@ -14,6 +14,17 @@ public class Node : MonoBehaviour
     public int turretType = -1;
     public int turretLevel = 0;
     public TurretBase turretScript;
+    public int turretPrice;
+    public int upgradePrice;
+
+    private GameObject currencyManager;
+
+    private void Awake()
+    {
+        currencyManager = GameObject.Find("CurrencyManager");
+        turretPrice = 100;
+        upgradePrice = 100;
+    }
 
     private void Start()
     {
@@ -32,11 +43,33 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (BuildManager.instance.inBuildMode && turret == null)
-            BuildManager.instance.BuildTurret(this);
-        if (BuildManager.instance.inUpgradeMode && turret != null && turretLevel < 3)
-            BuildManager.instance.UpgradeTurret(this);
+        //build
+        if (currencyManager.GetComponent<currencyManager>().balanceCheck(turretPrice))
+        {
+            if (BuildManager.instance.inBuildMode && turret == null)
+            {
+                currencyManager.GetComponent<currencyManager>().currentBal -= turretPrice;
+                BuildManager.instance.BuildTurret(this);
+            }
+                
+        }
+
+        //upgrade
+        if (currencyManager.GetComponent<currencyManager>().balanceCheck(upgradePrice))
+        {
+            if (BuildManager.instance.inUpgradeMode && turret != null && turretLevel < 3)
+            {
+                currencyManager.GetComponent<currencyManager>().currentBal -= upgradePrice;
+                BuildManager.instance.UpgradeTurret(this);
+            }
+        }
+
+        //sell
         if (BuildManager.instance.inSellMode && turret != null)
+        {
+            currencyManager.GetComponent<currencyManager>().currentBal += turretPrice;
             BuildManager.instance.SellTurret(this);
+        }
+            
     }
 }
