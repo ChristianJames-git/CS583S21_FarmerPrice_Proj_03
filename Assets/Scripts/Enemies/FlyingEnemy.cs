@@ -4,6 +4,13 @@ public class FlyingEnemy : EnemyBase
 {
 
     public float flightHeight;
+    protected int coinDrop = 75;
+
+    public FlyingEnemy()
+    {
+        enemyMoneyDrop = coinDrop;
+        speed = 2;
+    }
 
     protected new void Start()
     {
