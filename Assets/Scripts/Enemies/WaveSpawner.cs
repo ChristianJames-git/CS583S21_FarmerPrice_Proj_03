@@ -82,8 +82,8 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.paused)
-        {
+        //if (!GameManager.Instance.paused)
+        //{
             //set timer
             timer += Time.deltaTime * Time.timeScale;
 
@@ -109,7 +109,7 @@ public class WaveSpawner : MonoBehaviour
                 else
                     Destroy(this.gameObject);
             }
-        }
+        //}
     }
 
     private float SpawnWave(List<SpawnContainer> tempWave)
