@@ -8,8 +8,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected Vector3 target;
     protected int pointIndex;
 
-    public int enemyMoneyDrop;
-    public GameObject currencyManager;
+    protected int enemyMoneyDrop;
 
     protected void Start()
     {
@@ -65,7 +64,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (health <= 0)
         {
             //line below adds the enemyMoneyDrop value to the players balance when the enemy dies
-            currencyManager.GetComponent<currencyManager>().currentBal += enemyMoneyDrop;
+            CurrencyManager.instance.inputMoney(enemyMoneyDrop);
             Destroy(this.gameObject);
         }
             

@@ -11,6 +11,7 @@ public class BuildManager : MonoBehaviour
     public GameObject turret1, turret2, turret3;
     private List<GameObject> turretPrefabs;
     public Transform Bullets;
+    private int[,] turretCosts;
 
     [Header("Modes")]
     public bool inBuildMode;
@@ -35,6 +36,7 @@ public class BuildManager : MonoBehaviour
         turretPrefabs = new List<GameObject>() { turret1, turret2, turret3 };
         turretSprites = new List<Sprite>() { turret1Sprite, turret2Sprite, turret3Sprite };
         orange = new Color(1, 0.45f, 0, 1);
+        turretCosts = new int[3, 3] { { 100, 150, 250 }, { 125, 240, 400 }, { 150, 280, 600 } };
     }
 
     private void Update()
@@ -131,41 +133,58 @@ public class BuildManager : MonoBehaviour
     //Mode Effects
     public void BuildTurret (Node script)
     {
-        //Add money checking and subtraction
-        GameObject turret = (GameObject)Instantiate(turretPrefabs[currentTurretDisplayed], script.transform.position, script.transform.rotation, TurretsContainer);
-        script.turret = turret;
-        script.turretScript = turret.GetComponent<TurretBase>();
-        script.turretScript.UpdateStats(0);
-        script.turretColor = turret.GetComponentInChildren<Renderer>().material;
-        script.turretType = currentTurretDisplayed;
-        UpgradeTurret(script);
+        if (CurrencyManager.instance.balanceCheck(turretCosts[currentTurretDisplayed, 0]))
+        {
+            CurrencyManager.instance.outputMoney(turretCosts[currentTurretDisplayed, 0]);
+            GameObject turret = (GameObject)Instantiate(turretPrefabs[currentTurretDisplayed], script.transform.position, script.transform.rotation, TurretsContainer);
+            script.turret = turret;
+            script.turretScript = turret.GetComponent<TurretBase>();
+            script.turretScript.UpdateStats(0);
+            script.turretColor = turret.GetComponentInChildren<Renderer>().material;
+            script.turretType = currentTurretDisplayed;
+            script.baseColor = Color.yellow;
+            script.turretColor.color = Color.yellow;
+            script.turretLevel++;
+        }
+        else
+            Debug.Log("not enough money");//Add visual or verbal warning of not enough funds
     }
     public void UpgradeTurret(Node script)
     {
-        Color newColor;
-        //Add money checking and subtraction and damage upgrade
-        switch (script.turretLevel)
+        if (CurrencyManager.instance.balanceCheck(turretCosts[script.turretType, script.turretLevel]))
         {
-            case 0:
-                newColor = Color.yellow;
-                break;
-            case 1:
-                newColor = orange;
-                break;
-            case 2:
-                newColor = Color.red;
-                break;
-            default:
-                newColor = Color.white;
-                break;
+            Color newColor;
+            CurrencyManager.instance.outputMoney(turretCosts[script.turretType, script.turretLevel]);
+            switch (script.turretLevel)
+            {
+                case 0:
+                    newColor = Color.yellow;
+                    break;
+                case 1:
+                    newColor = orange;
+                    break;
+                case 2:
+                    newColor = Color.red;
+                    break;
+                default:
+                    newColor = Color.white;
+                    break;
+            }
+            script.turretScript.UpdateStats(script.turretLevel);
+            script.turretColor.color = newColor;
+            script.baseColor = newColor;
+            script.turretLevel++;
         }
-        script.turretScript.UpdateStats(script.turretLevel);
-        script.turretColor.color = newColor;
-        script.baseColor = newColor;
-        script.turretLevel++;
+        else
+            Debug.Log("not enough money"); //Add visual or verbal warning of not enough funds
     }
     public void SellTurret(Node script)
     {
+        int money = 0;
+        for (int i = 0; i < script.turretLevel; i++)
+            money += turretCosts[script.turretType, i];
+        money = (int)(money * 0.8);
+        CurrencyManager.instance.inputMoney(money);
         Destroy(script.turret);
         script.turret = null;
         script.baseColor = Color.white;
