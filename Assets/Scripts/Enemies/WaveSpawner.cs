@@ -62,6 +62,7 @@ public class WaveSpawner : MonoBehaviour
     private List<Wave> waves;
     public GameObject spawner;
     private float timer;
+    private float waveEndTime;
     public GameObject flyingEnemy;
     public GameObject groundEnemy;
     private int currWave;
@@ -106,7 +107,7 @@ public class WaveSpawner : MonoBehaviour
                 //we dont have anymore waves to spawn
                 Destroy(this.gameObject);
             }*/
-            if (inWave && GameManager.Instance.enemies.Length == 0)
+            if (inWave && timer > waveEndTime)
             {
                 Debug.Log("Waves removed");
                 inWave = false;
@@ -123,7 +124,7 @@ public class WaveSpawner : MonoBehaviour
                     //spawn Wave
                     List<SpawnContainer> tempWave = waves[0].GetWave();
                     inWave = true;
-                    SpawnWave(tempWave);
+                    waveEndTime = timer + SpawnWave(tempWave);
                 }
                 else
                     Destroy(this.gameObject);
@@ -131,15 +132,15 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnWave(List<SpawnContainer> tempWave)
+    private float SpawnWave(List<SpawnContainer> tempWave)
     {
-        //float longestTime = 0;
+        float longestTime = 0;
         foreach (SpawnContainer container in tempWave) {
             EnemySpawner temp = Instantiate(spawner, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<EnemySpawner>();
             temp.SetSettings(container.getSpawnTimer(), container.GetLifeTime(), container.GetEnemyType());
-            //if (container.GetLifeTime() > longestTime)
-            //    longestTime = container.GetLifeTime();
+            if (container.GetLifeTime() > longestTime)
+                longestTime = container.GetLifeTime();
         }
-        //return longestTime;
+        return longestTime;
     }
 }

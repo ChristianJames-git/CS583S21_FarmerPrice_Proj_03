@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameObject[] enemies;
     public bool paused;
     private string enemyTag = "Enemy";
+    //public float timer;
 
     public static GameManager Instance { get; private set; }
 
