@@ -29,9 +29,18 @@ public class MapManager : MonoBehaviour
             {
                 Cursor.lockState = CursorLockMode.Confined;
                 Debug.Log("Cursor should be unlocked");
+
+                //set timescale to 0
+                Time.timeScale = 0;
             }
             else
+            {
                 Cursor.lockState = CursorLockMode.Locked;
+
+                //set time scale to 1
+                Time.timeScale = 1;
+            }
+                
         }
     }
 }
