@@ -1150,6 +1150,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8160474364824337852, guid: 7818b8f43a8da43b0ae9ab636b6ae523,
+        type: 3}
+      propertyPath: waveDisplay
+      value: 
+      objectReference: {fileID: 6450851443708540634}
     - target: {fileID: 8160474364824337853, guid: 7818b8f43a8da43b0ae9ab636b6ae523,
         type: 3}
       propertyPath: m_RootOrder
@@ -2977,9 +2982,12 @@ PrefabInstance:
     - target: {fileID: 6450851444492881112, guid: 2618225acbcb340ec9e67616039c55da,
         type: 3}
       propertyPath: m_text
-      value: '1
-
-'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450851444492881112, guid: 2618225acbcb340ec9e67616039c55da,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 6450851444492881703, guid: 2618225acbcb340ec9e67616039c55da,
         type: 3}
@@ -3005,6 +3013,18 @@ PrefabInstance:
 --- !u!114 &6450851443708540633 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6450851444368251970, guid: 2618225acbcb340ec9e67616039c55da,
+    type: 3}
+  m_PrefabInstance: {fileID: 6450851443708540632}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6450851443708540634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6450851444492881112, guid: 2618225acbcb340ec9e67616039c55da,
     type: 3}
   m_PrefabInstance: {fileID: 6450851443708540632}
   m_PrefabAsset: {fileID: 0}

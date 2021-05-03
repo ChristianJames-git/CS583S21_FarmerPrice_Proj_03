@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        //check if this spawber has exceeded it's lifetime
+        //check if this spawner has exceeded it's lifetime
         if (lifeTime < 0)
             Destroy(this.gameObject);
         else
