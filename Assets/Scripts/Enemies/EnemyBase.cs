@@ -2,17 +2,21 @@
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    public float speed = 2f;
-    public float health = 200;
+    protected float speed;
+    public float health;
+    public int damage;
 
     protected Vector3 target;
     protected int pointIndex;
+
+    protected int enemyMoneyDrop;
 
     protected void Start()
     {
         //grab the first target to move towards
         pointIndex = 0;
         target = Waypoints.points[pointIndex].position;
+        damage = 1;
     }
 
     protected void FixedUpdate()
@@ -46,7 +50,10 @@ public abstract class EnemyBase : MonoBehaviour
             if (Waypoints.points.Length > pointIndex)
                 target = findTarget();
             else
+            {
+                PlayerInfo.instance.DamageCore(damage);
                 Destroy(this.gameObject);
+            }
         }
     }
 
@@ -60,6 +67,11 @@ public abstract class EnemyBase : MonoBehaviour
 
         //check if the enemy has died
         if (health <= 0)
+        {
+            //line below adds the enemyMoneyDrop value to the players balance when the enemy dies
+            CurrencyManager.instance.inputMoney(enemyMoneyDrop);
             Destroy(this.gameObject);
+        }
+            
     }
 }

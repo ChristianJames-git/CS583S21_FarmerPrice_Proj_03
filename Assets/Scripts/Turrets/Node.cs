@@ -32,11 +32,16 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //build
         if (BuildManager.instance.inBuildMode && turret == null)
             BuildManager.instance.BuildTurret(this);
+
+        //upgrade
         if (BuildManager.instance.inUpgradeMode && turret != null && turretLevel < 3)
             BuildManager.instance.UpgradeTurret(this);
+
+        //sell
         if (BuildManager.instance.inSellMode && turret != null)
-            BuildManager.instance.SellTurret(this);
+            BuildManager.instance.SellTurret(this);  
     }
 }
