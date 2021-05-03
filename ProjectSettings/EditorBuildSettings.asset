@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HowToPlay.unity
     guid: 23dc494b9f1d60a42adb62e0e7f6e854
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: a9af181a014b5fe4db8fc3fd835ec9ca
+  - enabled: 1
+    path: Assets/Scenes/YouWin.unity
+    guid: 8af6a11fb53191c468da1928e05255e4
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 45eba2ba578301e4e9cca83d7dabf868
   m_configObjects: {}

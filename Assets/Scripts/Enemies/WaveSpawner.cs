@@ -104,7 +104,8 @@ public class WaveSpawner : MonoBehaviour
             else
             {
                 Destroy(this.gameObject);
-                GameManager.Instance.ChangeScene("YouWin");
+                GameManager.Instance.win = true;
+                GameManager.Instance.ChangeScene("EndScene");
             }
         }
     }
