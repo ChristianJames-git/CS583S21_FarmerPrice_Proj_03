@@ -5,6 +5,8 @@ using UnityEngine;
 [SerializeField]
 public class LevelCreation : MonoBehaviour
 {
+    private int coreHealth = 5;
+
     [Header("Map References")]
     public GameObject buildAreaModel;
     public GameObject openAreaModel, WallNS, WallWE, Ground;
@@ -17,6 +19,7 @@ public class LevelCreation : MonoBehaviour
     void Start()
     {
         InstantiateBuildAreas();
+        PlayerInfo.instance.SetCoreHealth(coreHealth);
     }
 
     private void InstantiateBuildAreas()

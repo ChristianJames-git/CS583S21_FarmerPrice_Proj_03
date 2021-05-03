@@ -2,8 +2,9 @@
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    public float speed = 2f;
-    public float health = 200;
+    protected float speed;
+    public float health;
+    public int damage;
 
     protected Vector3 target;
     protected int pointIndex;
@@ -15,6 +16,7 @@ public abstract class EnemyBase : MonoBehaviour
         //grab the first target to move towards
         pointIndex = 0;
         target = Waypoints.points[pointIndex].position;
+        damage = 1;
     }
 
     protected void FixedUpdate()
@@ -48,7 +50,10 @@ public abstract class EnemyBase : MonoBehaviour
             if (Waypoints.points.Length > pointIndex)
                 target = findTarget();
             else
+            {
+                PlayerInfo.instance.DamageCore(damage);
                 Destroy(this.gameObject);
+            }
         }
     }
 

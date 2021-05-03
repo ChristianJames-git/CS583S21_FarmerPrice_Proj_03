@@ -87,26 +87,6 @@ public class WaveSpawner : MonoBehaviour
             //set timer
             timer += Time.deltaTime * Time.timeScale;
 
-            /*if (waves.Count > 0)
-            {
-                EnemySpawner temp;
-
-                //check is the next wave should spawn
-                if (waves[0].GetTimeToSpawn() <= timer)
-                {
-                    //spawn that enemy spawner
-                    temp = Transform.Instantiate(spawner, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<EnemySpawner>();
-                    temp.SetSettings(waves[0].getSpawnTimer(), waves[0].GetLifeTime(), waves[0].GetEnemyType());
-
-                    //remove it form the list, we have spawned the wave
-                    waves.RemoveAt(0);
-                }
-            }
-            else
-            {
-                //we dont have anymore waves to spawn
-                Destroy(this.gameObject);
-            }*/
             if (inWave && timer > waveEndTime)
             {
                 Debug.Log("Waves removed");
