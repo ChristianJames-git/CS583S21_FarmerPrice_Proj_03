@@ -6,7 +6,7 @@ public class GroundEnemy : EnemyBase
     protected GroundEnemy()
     {
         enemyMoneyDrop = coinDrop;
-        speed = 15f;
+        speed = 1.5f;
     }
 
     protected override Vector3 findTarget()
