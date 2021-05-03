@@ -81,33 +81,31 @@ public class WaveSpawner : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (!GameManager.Instance.paused)
+{
+        //set timer
+        timer += Time.deltaTime * Time.timeScale;
+
+        if (inWave && timer > waveEndTime)
         {
-            //set timer
-            timer += Time.deltaTime * Time.timeScale;
+            inWave = false;
+            waves.RemoveAt(0);
+        }
 
-            if (inWave && timer > waveEndTime)
+        if (Input.GetKeyDown(KeyCode.Return) && !inWave && GameManager.Instance.enemies.Length == 0)
+        {
+            if (waves.Count > 0)
             {
-                Debug.Log("Waves removed");
-                inWave = false;
-                waves.RemoveAt(0);
-
+                waveDisplay.text = (++currWave).ToString();
+                //spawn Wave
+                List<SpawnContainer> tempWave = waves[0].GetWave();
+                inWave = true;
+                waveEndTime = timer + SpawnWave(tempWave);
             }
-
-            if (Input.GetKeyDown(KeyCode.Return) && !inWave)
+            else
             {
-                Debug.Log("Return pressed");
-                if (waves.Count > 0)
-                {
-                    waveDisplay.text = (++currWave).ToString();
-                    //spawn Wave
-                    List<SpawnContainer> tempWave = waves[0].GetWave();
-                    inWave = true;
-                    waveEndTime = timer + SpawnWave(tempWave);
-                }
-                else
-                    Destroy(this.gameObject);
+                Destroy(this.gameObject);
+                GameManager.Instance.win = true;
+                GameManager.Instance.ChangeScene("EndScene");
             }
         }
     }
