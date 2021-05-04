@@ -36,7 +36,6 @@ public class FlyingEnemy : EnemyBase
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
         transform.rotation *= Quaternion.Euler(0, 180, 0); // this adds a 180 degrees Y rotation
-        print("hello from buuter");
         //transform.Rotate(dir);
     }
 }
