@@ -19,6 +19,25 @@ public class FlyingEnemy : EnemyBase
         damage = 1;
     }
 
+    protected new void FixedUpdate()
+    {
+        FindWayPoint();
+
+        if (health <= 0)
+        {
+            AudioManager._instance.PlaySound("FlyingEnemyDeathSound");
+            Destroy(this.gameObject);
+            return;
+        }
+
+        //direction vector points form this object to the target
+        Vector3 dir = target - transform.position;
+
+
+        //move the enemy if not in the map
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+    }
+
     protected override Vector3 findTarget()
     {
         return Waypoints.points[pointIndex].position + new Vector3(0, flightHeight, 0);
