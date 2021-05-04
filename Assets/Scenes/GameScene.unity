@@ -1165,6 +1165,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8160474364824337852, guid: 7818b8f43a8da43b0ae9ab636b6ae523,
         type: 3}
+      propertyPath: groundEnemy
+      value: 
+      objectReference: {fileID: 2656017034464940010, guid: 3b3b63399f1e3a040a51fa641c21ee9e,
+        type: 3}
+    - target: {fileID: 8160474364824337852, guid: 7818b8f43a8da43b0ae9ab636b6ae523,
+        type: 3}
       propertyPath: waveDisplay
       value: 
       objectReference: {fileID: 6450851443708540634}
