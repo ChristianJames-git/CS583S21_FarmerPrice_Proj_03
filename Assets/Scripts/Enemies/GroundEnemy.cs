@@ -14,7 +14,7 @@ public class GroundEnemy : EnemyBase
         transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 
         enemyMoneyDrop = coinDrop;
-        speed = 15f;
+        speed = 1.5f;
         damage = 1;
     }
 

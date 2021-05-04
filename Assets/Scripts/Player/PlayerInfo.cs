@@ -40,7 +40,6 @@ public class PlayerInfo : MonoBehaviour
 
     public void UpdateBar()
     {
-        Debug.Log(coreHealth);
         float percent = (float)coreHealth / maxCoreHealth;
         healthBar.fillAmount = percent;
         if (percent > 0.5)
@@ -50,6 +49,6 @@ public class PlayerInfo : MonoBehaviour
         else if (percent > 0 && percent <= 0.25)
             healthBar.color = Color.red;
         else
-            GameManager.Instance.ChangeScene("YouLose");
+            GameManager.Instance.ChangeScene("EndScene");
     }
 }
