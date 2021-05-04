@@ -34,10 +34,7 @@ public abstract class EnemyBase : MonoBehaviour
 
 
         //move the enemy if not in the map
-        if (GameObject.Find("MapManager").GetComponent<MapManager>().inMap == false)
-        {
-            transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-        }
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
     }
 
     protected void FindWayPoint()
