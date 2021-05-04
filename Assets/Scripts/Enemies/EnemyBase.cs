@@ -2,7 +2,7 @@
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    protected float speed;
+    public float speed;
     public float health;
     public int damage;
 
@@ -43,12 +43,16 @@ public abstract class EnemyBase : MonoBehaviour
     protected void FindWayPoint()
     {
         // check if this enemy has reached the target
-        if (Vector3.Distance(transform.position, target) <= 0.2f)//enemy is flying so it will always be above the waypoints
+        if (Vector3.Distance(transform.position, target) <= 0.2f)
         {
             //find the next target
             pointIndex++;
             if (Waypoints.points.Length > pointIndex)
+            {
                 target = findTarget();
+                RotateToFace();
+            }
+                
             else
             {
                 PlayerInfo.instance.DamageCore(damage);
@@ -73,5 +77,17 @@ public abstract class EnemyBase : MonoBehaviour
             Destroy(this.gameObject);
         }
             
+    }
+
+    //rotates the object to be facing the waypoint(The direction it is moving)
+    public void RotateToFace()
+    {
+        //find the direction
+        Vector3 dir = transform.position - target;
+        Quaternion rotation = Quaternion.LookRotation(dir);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
+        transform.rotation *= Quaternion.Euler(0, -90, 0); // this adds a 90 degrees Y rotation
+        //transform.Rotate(dir);
     }
 }
