@@ -81,7 +81,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     private void Update()
-{
+    {
         //set timer
         timer += Time.deltaTime * Time.timeScale;
 
@@ -101,12 +101,12 @@ public class WaveSpawner : MonoBehaviour
                 inWave = true;
                 waveEndTime = timer + SpawnWave(tempWave);
             }
-            else
-            {
-                Destroy(this.gameObject);
-                GameManager.Instance.win = true;
-                GameManager.Instance.ChangeScene("EndScene");
-            }
+        }
+        if (waves.Count == 0 && GameManager.Instance.enemies.Length == 0)
+        {
+            Destroy(this.gameObject);
+            GameManager.Instance.win = true;
+            GameManager.Instance.ChangeScene("EndScene");
         }
     }
 
