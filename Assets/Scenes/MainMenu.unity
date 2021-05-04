@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1577,6 +1577,42 @@ MonoBehaviour:
   - name: MainMusic
     clip: {fileID: 8300000, guid: 554d2eaa90b1c4ff1b6e68c91f7b7cba, type: 3}
     volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: FlyingEnemyDeathSound
+    clip: {fileID: 8300000, guid: 39e1c24186d5047289c2171e50596b46, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: GroundEnemyDeathSound
+    clip: {fileID: 8300000, guid: 92dd2162109c44bceb6f530fb563ffb3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LaserShootSound
+    clip: {fileID: 8300000, guid: 4f01015d2e4dd4598a9843e43de49fff, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: RocketLaunchSoundEffect
+    clip: {fileID: 8300000, guid: bd7af0447faad47b49ea1d8f1ab5a3d9, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: TowerDestroyedSound
+    clip: {fileID: 8300000, guid: d6f97f82d714c43169e59b433fa8a88a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: TowerShootingSoundEffect
+    clip: {fileID: 8300000, guid: 423b7658163cc4298a2e655add28c6e0, type: 3}
+    volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 1
