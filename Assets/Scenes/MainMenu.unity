@@ -1365,6 +1365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   paused: 0
+  win: 0
 --- !u!4 &1747060285
 Transform:
   m_ObjectHideFlags: 0
