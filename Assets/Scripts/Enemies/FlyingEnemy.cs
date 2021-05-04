@@ -2,15 +2,8 @@
 
 public class FlyingEnemy : EnemyBase
 {
-
     public float flightHeight;
     protected int coinDrop = 75;
-
-    public FlyingEnemy()
-    {
-        enemyMoneyDrop = coinDrop;
-        speed = 2;
-    }
 
     protected new void Start()
     {
@@ -20,6 +13,10 @@ public class FlyingEnemy : EnemyBase
 
         //set the gameobject to be at the flying height
         transform.position = new Vector3(transform.position.x, transform.position.y + flightHeight, transform.position.z);
+
+        enemyMoneyDrop = coinDrop;
+        speed = 2;
+        damage = 1;
     }
 
     protected override Vector3 findTarget()

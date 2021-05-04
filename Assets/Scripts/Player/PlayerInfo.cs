@@ -40,6 +40,7 @@ public class PlayerInfo : MonoBehaviour
 
     public void UpdateBar()
     {
+        Debug.Log(coreHealth);
         float percent = (float)coreHealth / maxCoreHealth;
         healthBar.fillAmount = percent;
         if (percent > 0.5)
