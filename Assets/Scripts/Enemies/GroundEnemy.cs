@@ -23,4 +23,15 @@ public class GroundEnemy : EnemyBase
     {
         return Waypoints.points[pointIndex].position + new Vector3(0, -0.5f, 0);
     }
+
+    protected override void RotateToFace()
+    {
+        //find the direction
+        Vector3 dir = transform.position - target;
+        Quaternion rotation = Quaternion.LookRotation(dir);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
+        transform.rotation *= Quaternion.Euler(0, -90, 0); // this adds a 90 degrees Y rotation
+        //transform.Rotate(dir);
+    }
 }

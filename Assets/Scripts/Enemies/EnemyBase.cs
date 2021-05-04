@@ -80,14 +80,6 @@ public abstract class EnemyBase : MonoBehaviour
     }
 
     //rotates the object to be facing the waypoint(The direction it is moving)
-    public void RotateToFace()
-    {
-        //find the direction
-        Vector3 dir = transform.position - target;
-        Quaternion rotation = Quaternion.LookRotation(dir);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
-        transform.rotation *= Quaternion.Euler(0, -90, 0); // this adds a 90 degrees Y rotation
-        //transform.Rotate(dir);
-    }
+    protected abstract void RotateToFace();
+    
 }
