@@ -19,7 +19,7 @@ public class FlyingEnemy : EnemyBase
         damage = 1;
     }
 
-    protected new void FixedUpdate()
+    protected void FixedUpdate()
     {
         FindWayPoint();
 

@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
         }
 
         //start playing the main music
-        PlaySound("MainMusic");
+       PlaySound("MainMusic");
     }
 
     public void PlaySound(string name)

@@ -18,13 +18,15 @@ public class GroundEnemy : EnemyBase
         damage = 1;
     }
 
-    protected new void FixedUpdate()
+    protected void FixedUpdate()
     {
         FindWayPoint();
 
         if (health <= 0)
         {
+            Debug.Log("hello?");
             AudioManager._instance.PlaySound("GroundEnemyDeathSound");
+            print("played sound");
             Destroy(this.gameObject);
             return;
         }

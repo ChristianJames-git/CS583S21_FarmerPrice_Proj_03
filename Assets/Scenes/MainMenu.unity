@@ -1600,7 +1600,7 @@ MonoBehaviour:
     loop: 0
   - name: RocketLaunchSoundEffect
     clip: {fileID: 8300000, guid: bd7af0447faad47b49ea1d8f1ab5a3d9, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     source: {fileID: 0}
     loop: 0

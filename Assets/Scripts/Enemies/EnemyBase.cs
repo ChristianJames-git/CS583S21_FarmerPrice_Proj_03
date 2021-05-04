@@ -19,6 +19,7 @@ public abstract class EnemyBase : MonoBehaviour
         damage = 1;
     }
 
+    /**
     protected void FixedUpdate()
     {
         FindWayPoint();
@@ -35,7 +36,7 @@ public abstract class EnemyBase : MonoBehaviour
 
         //move the enemy if not in the map
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-    }
+    }*/
 
     protected void FindWayPoint()
     {
