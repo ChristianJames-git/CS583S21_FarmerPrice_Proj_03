@@ -49,6 +49,6 @@ public class PlayerInfo : MonoBehaviour
         else if (percent > 0 && percent <= 0.25)
             healthBar.color = Color.red;
         else
-            Debug.Log("You Lose");
+            GameManager.Instance.ChangeScene("YouLose");
     }
 }
