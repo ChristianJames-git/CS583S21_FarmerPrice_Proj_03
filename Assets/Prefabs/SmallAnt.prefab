@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1717961721136794788
+--- !u!1 &4254348335080232472
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,60 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2061731335262934558}
-  - component: {fileID: 3112944109068523963}
-  - component: {fileID: 925368113451265393}
-  - component: {fileID: 1951752731532902981}
-  - component: {fileID: 1951752731532902977}
-  m_Layer: 0
-  m_Name: GroundEnemy
+  - component: {fileID: 4254348335080232473}
+  - component: {fileID: 1044892116520784997}
+  - component: {fileID: 2391760678863481926}
+  - component: {fileID: 615668566273581838}
+  m_Layer: 8
+  m_Name: SmallAnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2061731335262934558
+--- !u!4 &4254348335080232473
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717961721136794788}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.994, y: -0.137, z: 1.852}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_GameObject: {fileID: 4254348335080232472}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.18800002, y: -0.10899997, z: 0}
+  m_LocalScale: {x: 0.30000007, y: 0.3, z: 0.30000007}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 7928420867513679126}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &3112944109068523963
+--- !u!64 &1044892116520784997
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254348335080232472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 212370497460711607, guid: 983dccbf9ad374685b467d1e946424cb, type: 3}
+--- !u!33 &2391760678863481926
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717961721136794788}
+  m_GameObject: {fileID: 4254348335080232472}
   m_Mesh: {fileID: 212370497460711607, guid: 983dccbf9ad374685b467d1e946424cb, type: 3}
---- !u!23 &925368113451265393
+--- !u!23 &615668566273581838
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717961721136794788}
+  m_GameObject: {fileID: 4254348335080232472}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,32 +94,50 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1951752731532902981
-CapsuleCollider:
+--- !u!1 &7928420867513679208
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717961721136794788}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.2535042
-  m_Height: 2.5070083
-  m_Direction: 1
-  m_Center: {x: -0.0043708086, y: 0.3008248, z: -0.517872}
---- !u!114 &1951752731532902977
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7928420867513679126}
+  - component: {fileID: 7928420867513679127}
+  m_Layer: 8
+  m_Name: SmallAnt
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7928420867513679126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928420867513679208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.812, y: 1.109, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4254348335080232473}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7928420867513679127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717961721136794788}
+  m_GameObject: {fileID: 7928420867513679208}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81270034691af437dabf4492d6ff07e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  health: 85
+  speed: 0
+  health: 100
   damage: 0
