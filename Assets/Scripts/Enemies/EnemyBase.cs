@@ -2,7 +2,7 @@
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    protected float speed;
+    public float speed;
     public float health;
     public int damage;
 
@@ -34,21 +34,22 @@ public abstract class EnemyBase : MonoBehaviour
 
 
         //move the enemy if not in the map
-        if (GameObject.Find("MapManager").GetComponent<MapManager>().inMap == false)
-        {
-            transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-        }
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
     }
 
     protected void FindWayPoint()
     {
         // check if this enemy has reached the target
-        if (Vector3.Distance(transform.position, target) <= 0.2f)//enemy is flying so it will always be above the waypoints
+        if (Vector3.Distance(transform.position, target) <= 0.2f)
         {
             //find the next target
             pointIndex++;
             if (Waypoints.points.Length > pointIndex)
+            {
                 target = findTarget();
+                RotateToFace();
+            }
+                
             else
             {
                 PlayerInfo.instance.DamageCore(damage);
@@ -74,4 +75,8 @@ public abstract class EnemyBase : MonoBehaviour
         }
             
     }
+
+    //rotates the object to be facing the waypoint(The direction it is moving)
+    protected abstract void RotateToFace();
+    
 }
