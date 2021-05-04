@@ -180,6 +180,7 @@ public class BuildManager : MonoBehaviour
     }
     public void SellTurret(Node script)
     {
+        AudioManager._instance.PlaySound("TowerDestroyedSound");
         int money = 0;
         for (int i = 0; i < script.turretLevel; i++)
             money += turretCosts[script.turretType, i];
