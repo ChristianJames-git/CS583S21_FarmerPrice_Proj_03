@@ -95,6 +95,14 @@ public abstract class TurretBase : MonoBehaviour
 
     protected void Shoot()
     {
+        if (this.name == "BasicTurret(Clone)")
+        {
+            AudioManager._instance.PlaySound("TowerShootingSoundEffect");
+        }
+        else
+        {
+            AudioManager._instance.PlaySound("RocketLaunchSoundEffect");
+        }
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, BuildManager.instance.Bullets);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
@@ -104,7 +112,11 @@ public abstract class TurretBase : MonoBehaviour
     private void Laser()
     {
         if (!laserRend.enabled)
+        {
             laserRend.enabled = true;
+            AudioManager._instance.PlaySound("LaserShootSound");
+        }
+            
         laserRend.SetPosition(0, firePoint.position);
         laserRend.SetPosition(1, target.position);
         if (fireCountdown <= 0)
