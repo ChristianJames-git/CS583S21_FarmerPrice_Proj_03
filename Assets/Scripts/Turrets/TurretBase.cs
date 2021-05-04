@@ -112,7 +112,11 @@ public abstract class TurretBase : MonoBehaviour
     private void Laser()
     {
         if (!laserRend.enabled)
+        {
             laserRend.enabled = true;
+            AudioManager._instance.PlaySound("LaserShootSound");
+        }
+            
         laserRend.SetPosition(0, firePoint.position);
         laserRend.SetPosition(1, target.position);
         if (fireCountdown <= 0)
