@@ -15,6 +15,8 @@ public class PauseMenu : MonoBehaviour
     public Button Restart;
     public Button ExitButton;
 
+    public GameObject MapReference;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +29,12 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (MapReference.GetComponent<MapManager>().inMap == false)
         {
-            Toggle();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Toggle();
+            }
         }
     }
 
