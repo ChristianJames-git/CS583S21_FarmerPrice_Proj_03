@@ -2,13 +2,22 @@
 
 public class EndSceneManager : MonoBehaviour
 {
+    public Camera cam;
+    public Animator anim;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
         if (GameManager.Instance.win)
-            Debug.Log("Show Win Camera Location");
+        {
+            anim.SetBool("FullSpin", true);
+
+        }    
         else
-            Debug.Log("Show Lose Camera Location");
+        {
+            anim.SetBool("Dead", true);
+            cam.transform.rotation = Quaternion.Euler(30, 180, 0);
+        }
+            
     }
     public void ToCredits()
     {
