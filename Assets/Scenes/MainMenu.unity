@@ -1365,7 +1365,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   paused: 0
-  win: 0
 --- !u!4 &1747060285
 Transform:
   m_ObjectHideFlags: 0
@@ -1544,6 +1543,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+<<<<<<< HEAD
 --- !u!1 &1934532069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,6 +1630,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> d322aa1224523580d915bc7cc17caf2a257e2ac5
 --- !u!33 &688586985907428462
 MeshFilter:
   m_ObjectHideFlags: 0
