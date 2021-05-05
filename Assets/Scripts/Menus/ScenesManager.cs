@@ -34,10 +34,6 @@ public class ScenesManager : MonoBehaviour
     {
         gm.ChangeScene("HowToPlay");
     }
-    public void onCreditsButtonClicked()
-    {
-        gm.ChangeScene("Credits");
-    }
     public void onQuitClicked()
     {
         #if UNITY_EDITOR

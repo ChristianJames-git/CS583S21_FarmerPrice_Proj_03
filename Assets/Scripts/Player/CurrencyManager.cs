@@ -9,6 +9,7 @@ public class CurrencyManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(" oops");
         instance = this;
         currentBal = 700;
         UpdateHUD();
