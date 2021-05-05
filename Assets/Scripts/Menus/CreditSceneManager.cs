@@ -23,6 +23,7 @@ public class CreditSceneManager : MonoBehaviour
 
     public void Next()
     {
+        Debug.Log("Hi");
         panelList[currPanel++].SetActive(false);
         if (currPanel < panelList.Count)
             panelList[currPanel].SetActive(true);
