@@ -50,7 +50,7 @@ public abstract class EnemyBase : MonoBehaviour
                 target = findTarget();
                 RotateToFace();
             }
-
+                
             else
             {
                 PlayerInfo.instance.DamageCore(damage);
@@ -74,6 +74,10 @@ public abstract class EnemyBase : MonoBehaviour
             CurrencyManager.instance.inputMoney(enemyMoneyDrop);
             Destroy(this.gameObject);
         }
-
+            
     }
+
+    //rotates the object to be facing the waypoint(The direction it is moving)
+    protected abstract void RotateToFace();
+    
 }
