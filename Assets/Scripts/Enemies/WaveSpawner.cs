@@ -74,14 +74,14 @@ public class WaveSpawner : MonoBehaviour
         waves = new List<Wave>();
         waves.Add(new Wave(new List<SpawnContainer> { new SpawnContainer(2, 3, 15, groundEnemy) }));
         waves.Add(new Wave(new List<SpawnContainer> { new SpawnContainer(2, 3, 15, flyingEnemy), new SpawnContainer(1, 4, 18, groundEnemy) }));
-        waves.Add(new Wave(new List<SpawnContainer> { new SpawnContainer(1, 0.2f, 2, groundEnemy), new SpawnContainer(3, 1, 7, groundEnemy), new SpawnContainer(0, 2, 10, flyingEnemy) }));
+        Debug.Log(waves.Count);
         //start timer at 0
         timer = 0;
         currWave = 0;
     }
 
     private void Update()
-    {
+{
         //set timer
         timer += Time.deltaTime * Time.timeScale;
 
@@ -116,8 +116,8 @@ public class WaveSpawner : MonoBehaviour
         foreach (SpawnContainer container in tempWave) {
             EnemySpawner temp = Instantiate(spawner, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<EnemySpawner>();
             temp.SetSettings(container.getSpawnTimer(), container.GetLifeTime(), container.GetEnemyType());
-            if (container.GetLifeTime() + container.GetTimeToSpawn() > longestTime)
-                longestTime = container.GetLifeTime() + container.GetTimeToSpawn();
+            if (container.GetLifeTime() > longestTime)
+                longestTime = container.GetLifeTime();
         }
         return longestTime;
     }

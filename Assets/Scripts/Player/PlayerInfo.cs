@@ -6,7 +6,7 @@ public class PlayerInfo : MonoBehaviour
 {
     //Maybe a PlayerStats?
 
-    //Keeps track of money and any person upgrades? 
+    //Keeps track of money and any person upgrades?
     //We don't need this unless we make the character personalization more complex
     public static PlayerInfo instance;
     private int coreHealth;
