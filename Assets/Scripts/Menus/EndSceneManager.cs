@@ -15,7 +15,7 @@ public class EndSceneManager : MonoBehaviour
         else
         {
             anim.SetBool("Dead", true);
-            cam.transform.position = cam.transform.position + new Vector3(0, 180, 0);
+            cam.transform.rotation = Quaternion.Euler(30, 180, 0);
         }
             
     }
