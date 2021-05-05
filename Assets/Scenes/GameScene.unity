@@ -3155,6 +3155,7 @@ MonoBehaviour:
   Resume: {fileID: 1545095928}
   Restart: {fileID: 745967819}
   ExitButton: {fileID: 828172817}
+  MapReference: {fileID: 1242978442}
 --- !u!4 &1509526749
 Transform:
   m_ObjectHideFlags: 0
