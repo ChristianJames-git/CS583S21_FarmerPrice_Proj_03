@@ -42,5 +42,7 @@ public class MapManager : MonoBehaviour
             }
                 
         }
+        if (inMap)
+            Time.timeScale = 0;
     }
 }

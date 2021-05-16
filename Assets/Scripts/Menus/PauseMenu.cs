@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -28,9 +26,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             Toggle();
-        }
     }
 
     public void Toggle()
@@ -40,7 +36,6 @@ public class PauseMenu : MonoBehaviour
         if(ui.activeSelf)
         {
             Time.timeScale = 0f;
-            //GameManager.Instance.paused = true;
             HUD.SetActive(false);
             BuildUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Confined;
@@ -49,7 +44,6 @@ public class PauseMenu : MonoBehaviour
         else
         {
             Time.timeScale = 1f;
-            //GameManager.Instance.paused = false;
             HUD.SetActive(true);
             BuildUI.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;

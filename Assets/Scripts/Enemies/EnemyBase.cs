@@ -19,25 +19,6 @@ public abstract class EnemyBase : MonoBehaviour
         damage = 1;
     }
 
-    /**
-    protected void FixedUpdate()
-    {
-        FindWayPoint();
-
-        if (health <= 0)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-
-        //direction vector points form this object to the target
-        Vector3 dir = target - transform.position;
-
-
-        //move the enemy if not in the map
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-    }*/
-
     protected void FindWayPoint()
     {
         // check if this enemy has reached the target
@@ -59,8 +40,6 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    protected abstract Vector3 findTarget();
-
     //method to deal with the enemy taking damage
     public void Hit(float damage)
     {
@@ -76,6 +55,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
             
     }
+    protected abstract Vector3 findTarget();
 
     //rotates the object to be facing the waypoint(The direction it is moving)
     protected abstract void RotateToFace();
